@@ -1,0 +1,41 @@
+challnges yu faced
+what is waits in selenium
+what is collections(full)
+how memory is manage in Java
+how to restrict the object creation of class not more than one
+parallely testing in TestNG
+what is stalemenet ref exception
+
+
+API
+what is static imports
+what is requestspecification
+what items to validate
+
+
+
+PARALLEL EXECUTION
+validate the http code of api
+how to create framework from stsrat
+what is maven
+how yu execute the project
+script running in different broswer shows error and how to fix
+what is method overriding and loading
+what is call first constructor or instance block
+can we override the static mthod
+what are the exceptions(invalid element exception)
+how to get the vaklues from property file
+what are query parameters and path parameters
+what RequestSpecification 
+how to get the value from json output
+what happen if we send same payload again and again to the server
+how to find the second largest no in array
+String concept with new and literal and it;s memory
+how to fetch the duplicate values from the dropdown and print
+your script is fine in local but not in remote how to handle and issues yu have in this?
+how to compare the two csv file data 
+encapsultion with example
+what is pagefactorut.initelement 
+how to close the 10 tabs without quit function
+how to prevent the refresh the page inbetween the script
+

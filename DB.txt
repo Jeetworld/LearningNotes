@@ -1,0 +1,9 @@
+The files containing the relevant test cases are SavingsTest, LoanTest, CheckingTest (they may ignore the other files with test cases)
+
+validate the existing test cases (are assertions missing? )
+
+add addional, missing test cases (e. g. checking account has only 2)
+
+add edge cases (hope it is clear what that means for the provided example)
+
+Associate  has to implement the test case at initial level with good Functional flow  and if we run it against our reference implementation it should work (this would be a TDD approach)

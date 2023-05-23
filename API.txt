@@ -1,0 +1,472 @@
+Sources: https://www.swtestacademy.com/rest-assured-tutorial-api-testing/
+https://dev.to/mehmehmehlol/put-vs-patch-put-vs-post-56i9
+https://chercher.tech/rest-assured/logging-rest-assured
+
+================
+WEBSERVICE:
+The method of communication between two devices over the network.
+
+Types of WebService:
+SOAP web services.
+RESTful web services.
+
+-----------------
+
+SOAP:
+SOAP is an acronym for Simple Object Access Protocol.
+SOAP is a XML-based protocol for accessing web services.
+SOAP is a W3C recommendation for communication between applications.
+SOAP is XML based, so it is platform independent and language independent. In other words, it can be used with Java, .Net or PHP language on any platform.
+
+WSDL:
+WSDL is an acronym for Web Services Description Language.
+WSDL is a xml document containing information about web services such as method name, method parameter and how to access it.
+WSDL file which has the required information on what the web service does in addition to the location of the web service.
+
+Advantages:
+WS Security: SOAP defines its own security known as WS Security.
+Language and Platform independent: SOAP web services can be written in any programming language and executed in any platform.
+
+DisAdvantages:
+Slow: SOAP uses XML format that must be parsed to be read. It defines many standards that must be followed while developing the SOAP applications. So it is slow and consumes more bandwidth and resource.
+WSDL dependent: SOAP uses WSDL and doesn't have any other mechanism to discover the service.
+
+
+
+
+REST:
+REST stands for REpresentational State Transfer.
+REST is an architectural style not a protocol.
+
+Advantages:
+>>Fast: RESTful Web Services are fast because there is no strict specification like SOAP. It consumes less bandwidth and resource.
+
+>>Language and Platform independent: RESTful web services can be written in any programming language and executed in any platform.
+
+>>Can use SOAP: RESTful web services can use SOAP web services as the implementation.
+
+>>Permits different data format: RESTful web service permits different data format such as Plain Text, HTML, XML and JSON.
+DisAdvanatges:
+
+
+===============
+WHY API TESTING IMPORTANT:
+API tests are also faster to run and more isolated than UI tests, which makes it quicker and easier to identify and resolve bugs.
+
+
+
+==============
+REST or representational state transfer is an architectural style, rather than a protocol. What this means is
+that REST provides much more flexibility in terms of how you structure your message, which format you
+use, and how the client and the server scale. SOAP, on the other hand, requires tight coupling between
+client and server. If either side changes something, things go wrong, hence its protocol nature.
+REST supports: XML, JSON, HTML, plain text
+SOAP supports: XML only
+
+--------
+Authentication- WHo you are
+Authroisation- what you can do
+
+----------
+
+Bearer authentication (also called token authentication) is an HTTP 
+authentication scheme that involves sceirty tokens called bearer tokens
+
+-------------------
+Rest Assured is only used for java lang used to test for Web Services/Api's
+
+import io.restassured.RestAssured;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+
+
+
+JsonPath is class to parse the JSON output but it takes only string input
+
+=======================
+if you wnat to log everything,
+
+then().log().all().......
+
+>>log status line only
+then().log().status();
+
+>>loh header only
+then().log().headers();
+
+>>log only cookies
+then().log().cookies()
+
+>>logs nothing if validation fails
+.log().ifValidationFails()
+	.statusCode(202);
+
+>>Logs everything only if an error occurs (status code >= 400).
+.log().ifError();
+
+
+========================
+
+POST
+-IT ONLY CREATES
+-This method is neither safe nor idempotent. In other words, invoking two identical POST requests will result in two different resources containing the same information.
+-201 CREATED http status code will be generated
+
+
+PUT 
+-IT CREATES AND UPDATE AS WELL
+-A method to primarily update existing resource. If the resource does not exist, the API may decide to create a resource.
+-is a method of modifying resource where the client sends data that updates the entire resource
+-PUT replaces the entire resource if it exists or creates new if it does not exist.
+-If successfully updated, will return the 
+-HTTP status code 200 (OK), or 
+-204 (No Content) if nothing is updated. 
+-If successfully created, will return the HTTP status code 201 (CREATED).
+
+
+PATCH is a method of modifying resources where the client sends partial data that is to be updated without modifying the entire data
+Unlike PUT Request, PATCH does partial update e.g. Fields that need to be updated by the client, only that field is updated without modifying the other field.
+
+
+======================
+Serialisation-converting --is a process of converting data objects into a stream of data
+-Java objectx to Payload - De-serlisation- we convert the JSON format into a type we prefer,
+
+
+200 – Valid Link/success
+301/302 - Page redirection temporary/permanent
+404 – Page not found
+400 – Bad request
+401 – Unauthorized
+500 – Internal Server Error
+------------
+https://www.techgeeknext.com/rest-assured-interview-questions
+RequestSpecification reqSpec = RestAssured.given();
+reqSpec.baseUri("http://localhost:8080")
+reqSpec.basePath("/employees");
+
+RequestSpecification reqSpec =
+         RestAssured.given()
+		.baseUri("http://localhost:8080")
+        	.basePath("/employees");
+
+----------------------
+
+if we want to log everything than we use log().all()
+
+String response = then().assertThat().statusCode(200).body("value","id").extract().response().asString();
+
+here if we capture the response in JSON in response vairable, if we want to parse any value in response than we JsonPath class(it accepts string).
+new JsonPath().getString("value");
+
+---------------
+
+resuqest and reponse spec builder
+
+RestAssured.baseURI = "https://restapi.demoqa.com/utilities/weather/city";
+		RequestSpecification httpRequest = RestAssured.given();
+		Response response = httpRequest.get("/Hyderabad");
+
+		// Get the status code from the Response. In case of 
+		// a successfull interaction with the web service, we
+		// should get a status code of 200.
+		int statusCode = response.getStatusCode();
+
+----------------------------------------
+
+Source: https://www.techgeeknext.com/rest-assured-interview-questions
+
+
+REST : REpresentational State Transfer is the acronym for REpresentational State Transfer. It means that when a RESTful API is invoked, the server will send a representation of the status of the requested resource to the client. The operation you want the server to perform on that resource, expressed as an HTTP method.
+
+
+
+
+RequestSpecification in Rest Assured can be used to group together common request specs and turn them into a single object.
+This interface has methods for defining the base URL, base path, headers, and other parameters.
+To obtain a reference for RequestSpecification, we must use the given() function of the RestAssured class. We can't make an object out of RequestSpecification because it's an interface. Its implemented class is RequestSpecificationImpl.
+RequestSpecification reqSpec =
+         RestAssured.given()
+		.baseUri("http://localhost:8080")
+      		  .basePath("/employees");
+------------------------------------
+Path params are part of the url where as query parameters are added after the ? mark symbol and separated from other query parameters by & symbol.
+params used for filtering data are usually used as query param
+
+@QueryParam is used to access key/value pairs in the query string of the URL (the part after the ?). For example in the url http://example.com?q=searchterm, you can use @QueryParam("q") to get the value of q.
+QueryParam example
+GET http://base-url/students?grade=10
+Query param example
+Finding active employees with title as developer
+
+GET http://base-url/employees?title=developer&status=active
+
+@PathParam is used to match a part of the URL as a parameter. For example in an url of the form http://example.com/books/{bookid}, you can use @PathParam("bookid") to get the id of a book.
+PathParam example
+GET http://base-url/students/{roll-number}
+Path param example
+Finding employee with ID = 12345
+
+GET http://base-url/employees/{12345}
+
+------------------------------------
+Static import is a Java programming language feature that allows members (fields and methods) that have been scoped as public static within their container class to be used in Java code without mentioning the class in which the field has been defined.
+import static io.restassured.RestAssured.*;
+// with static import
+		given();
+
+without static import
+  import io.restassured.RestAssured;
+		 *  RestAssured.given();
+
+
+----------
+rest assured method chaining
+In object-oriented programming languages, method chaining is a typical syntax for invoking numerous method calls. Each method returns an object, allowing multiple calls to be chained together in a single line without the need for variables to hold interim results.
+
+For example in rest assured all methods chained together with dots.
+ given()
+		 .baseUri(baseUri)
+		 .queryParam(parameterName, parameterValues)
+		 .accept(contentType).
+		 .when()
+		 .then();
+-=----
+client server architecture?
+The client-server model defines how a server gives resources and services to one or more clients. Web servers, mail servers, and file servers are examples of servers. So, the Client requests something, and the Server fulfils the request.
+-----------------
+
+JSON (JavaScript Object Notation) is a text-based standard for describing structured data that is based on JavaScript object syntax. It's often used in web applications to send data to server and client.
+{
+ "id"        : 1,
+ "username"  : "TechGeekNextUser",
+ "role"      : "Admin"
+}
+
+------------
+
+validate the response of REST API in Rest Assured?
+
+Response is an interface available io.restassured.response package.This interface contains many methods, majority of which can be used to extract parts from the received response. Below are some method of response which we can use to validate the received response:
+
+1)Status Code: getStatusCode() method can be used to validate the response. It is an integer values, if it valid response will return 200.
+Response employeesResponse = RestAssured.given().request(Method.GET, "/all");
+
+//validate the resonse using Assert
+Assert.assertEquals(200, employeesResponse.getStatusCode());
+
+2)Status Line: getStatusLine() method can be used to validate the response. It contains 3 part i.e. Http Protocol version, Status Code (Integer) and Status Code (String) like HTTP/1.1 200 OK
+Response employeesResponse = RestAssured.given().request(Method.GET, "/all");
+
+//validate response using Assert and checking with response StatusLine
+Assert.assertEquals("HTTP/1.1 200 OK",employeesResponse.getStatusLine());
+
+-------------
+What is the best way to keep sensitive data out of the log in rest assured?
+
+It is now available to blacklist headers using blacklistHeader method in REST Assured 4.2.0 ensuring that they are not displayed in the request or response log. One or more headers can be blacklisted. A blacklist is used to prevent sensitive data from being included in the log.
+
+-----------
+JSONPAH 
+JsonPath (io.restassured.path.json.JsonPath) is a simple way to get values from an Object document without having to use XPath. When retrieving an object from the document, it follows the Groovy GPath syntax. It can be thought of as a JSON-specific version of XPath. As an example, consider the following Object document.
+
+{ "company": {
+   "employee": [
+    { "id": 1,
+      "name": "TechGeekNextUser1",
+      "role": "Admin"
+    },
+    { "id": 2,
+      "name": "TechGeekNextUser2",
+      "role": "User"
+    },
+    { "id": 3,
+      "name": "TechGeekNextUser3",
+      "role": "User"
+    }
+  ]
+  }
+ }
+
+
+Response employeesResponse = RestAssured.given().request(Method.GET, "/all");
+JsonPath jsonPathObj = employeesResponse.jsonPath();
+
+//get a list of all employees id:
+List<String> employeeIds = jsonPathObj.get("company.employee.id");
+
+//get the first employee name:
+String empName = jsonPathObj.get("company.employee[0].name");
+
+-----
+
+How to log the request and response in case of validation failed in Rest Assured?
+
+
+If a test validation fails, log().ifValidationFails() logs everything in the request and response.
+/**
+     * Log the request and response details if validation fails.
+     */
+   @Test
+    public void testIfValidationFails() {
+        given().
+        baseUri("http://localhost:8080").
+        header("X-REGION", "NAM").
+        log().ifValidationFails().
+        when().
+        get("/employees").
+        then().
+        log().ifValidationFails().
+        assertThat().
+        statusCode(200);
+    }
+
+-------------------
+
+How to send a POST Request in Rest Assured?
+@Test
+    public void testPostEmployee() throws JSONException {
+        JSONObject empParams = new JSONObject();
+        empParams.put("name", "TechGeekNextUser44");
+        empParams.put("role", "Supervisor");
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(empParams.toString())
+                .log().all()
+
+                .when()
+                .post("http://localhost:8080/employee")
+
+                .then()
+                .assertThat().statusCode(200)
+                .body("name", equalTo("TechGeekNextUser44"))
+                .body("role", equalTo("Supervisor"))
+                .log().all();
+
+
+
+-------
+
+Q: What is the Array slice operator in JsonPath in Rest Assured?
+Ans:
+The array slice operator is a brilliant way to extract certain objects from Json. What if, in the case of employees, we wanted to get every alternate employee in the Json? We'll need the Array, Slice operator for this. [StartIndex: EndIndex: Steps] is the syntax of the Array Slice operator.
+
+$..employee[1,4,2]
+$..['employee'][1,4,2]
+------------------------------
+JsonPath is class to parse the JSON output but it takes only string input
+
+Serialisation
+is a process of converting data objects(Java objects) into a stream of data(JSON data)
+steps:
+-create pojo class
+-create separate class to add data in it..like P.setAddress(22);
+-use that thing in given().....body(P)
+-get the Response res
+-pass the res to JsonPath and get("key");
+
+De-Serialisation
+De-serlisation- we convert the JSON format into a type we prefer,....
+steps:
+-create same pojo class
+-
+---------------------
+
+200 OK – success status response code indicates that the request has succeeded. it occurs for get, head, post, trace http methods
+
+201 Ok --Indicates that the request has succeeded and a new resource has been created as a result.The common use case of this status code is as the result of a POST request.
+
+301/302 - Page redirection temporary/permanent
+
+400 BAD REQUEST --The request could not be understood by the server due to incorrect syntax. The client SHOULD NOT repeat the request without modifications.
+
+401 UNAUTHORISED is the status code to return when the client provides no credentials or invalid credentials.
+
+402 PAYMENT REQUIRED (Experimental) --Reserved for future use. It is aimed for using in the digital payment systems. Would indicate that the requested content is not available until the client makes a payment. this status code indicates that the request cannot be processed until the client makes a payment.
+
+403 FORBIDDEN -- The client does not have access rights to the content. Unlike 401, the client’s identity is known to the server. insufficient rights to a resource. 403 Forbidden is the status code to return when a client has valid credentials but not enough privileges to perform an action on a resource
+
+404 NOT FOUND --The server can not find the requested resource. Links that lead to a 404 page are often called broken or dead links. A 404 status code only indicates that the resource is missing: not whether the absence is temporary or permanent.
+
+409 CONFLICT is the most appropriate status code to report the failure of an "add new resource" operation, in case a resource with the same identifier already exists.29
+
+500 INTERNAL SERVER ERROR -- The server encountered an unexpected condition that prevented it from fulfilling the request.
+
+501 NOT IMPLEMENTED--The HTTP method is not supported by the server and cannot be handled. server error response code means that the server does not support the functionality required to fulfill the request.
+
+502 Bad Gateway -- server got an invalid response while working as a gateway to get the response needed to handle the request.
+
+503 Service Unavailable --The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is overloaded.
+
+504 Gateway Timeout --The server is acting as a gateway and cannot get a response in time for a request.
+
+-------------------------
+https://www.techgeeknext.com/rest-assured-interview-questions
+RequestSepcification:
+--RequestSpecification' interface provided by Rest Assured is used to club and extract repetitive actions like setting up base URL, headers, HTTP verbs etc which may be common for multiple Rest calls.
+-- To club common request specifications together and put as a common entity, we can use RequestSpecification in Rest Assured.
+--This interface has readymade methods to define base URL, base path, headers,
+
+RequestSpecification reqSpec = RestAssured.given();
+reqSpec.baseUri("http://localhost:8080")
+reqSpec.basePath("/employees")
+reqSepc.addQueryParam("key","123")
+reqSepc.build();
+
+RestAssured.given(requestSpecification)
+OR
+RestAssured.given().spec(requestSpecification)
+
+RequestSpecification reqSpec =
+         	RestAssured.given()
+		.baseUri("http://localhost:8080")
+        	.basePath("/employees")
+		.header("","")
+		.body("");
+
+
+
+
+---------------
+
+-----------------
+aurthetication:
+
+Basic
+given().auth().basic("your username", "your password").get("your end point URL");
+
+Preemptive
+given().auth().preemptive().basic("your username", "your password").get("your end point URL");
+
+Digest
+given().auth().digest("your username", "your password").get("your end point URL")
+
+Form
+given() .auth().form("your username", "your password").post("your end point URL")
+given().auth().form("your username", "your password", new FormAuthConfig("/perform_signIn","user","password"))
+
+OAuth1
+given().auth().oauth(consumerKey, consumerSecret, accessToken, tokenSecret).get("your end point URL")
+
+OAuth2
+given().auth().oauth2("Access token").get("your end point URL")
+
+-------------
+
+OAuth2.0
+
+with the help of below parameters we can request access token and that token we can use in given().auth().auth2("AccessToken").
+
+GrantType -- Authorisation Code
+redirect URL/CallbackURL
+Authorisarion server URL
+Access token url
+Client ID --will always change
+Client Secret	--will awlays change
+Scope
+State
+How to pass oauth in request >> Headers
+
+>>to stop encoding speaical characeters in access token than use given().urlEncodingEnabled(false).
+

@@ -1,0 +1,499 @@
+Permanent Role??
+WFH. Location to join
+Fixed ? Any varaible
+Strnegth of emp
+Any other office?
+
+
+
+How you estimate the estimation?
+https://www.guru99.com/an-expert-view-on-test-estimation.html
+
+what is ROI
+
+---
+that offer is from service based company. I prefer prodcut based company over service based why because i already worked over 3 years in product based company. They are offerings good perks and work life balance like no rush hush to deploy deliverables. 
+
+Bangalore:
+Bangalore is known as the "Silicon Valley of India" and  IT hub of India because of its role as the nation's leading software exporter as well as being a major semiconductor hub. Several state-owned aerospace and defence organisations are located in the city.
+	-climate 
+	-lot of growth oppertunities
+	-big projects are there
+	-somebit different in work culture in bangalore
+	-work life balance is there
+
+
+Product based company:
+	-You take ownership of your work
+	-You have more learning opportunities and get to be creative:
+	-You get a lot of opportunities to grow
+	-Service based companies are dependent on product based.
+	-Chances of going Onsite is more in service based
+
+Aviaity: We work to solve communication challenges in healthcare by creating a richer, more transparent exchange of information among health plans, providers, and technology partners. 
+
+
+
+----------------------
+I'm leading team of 3 memebers in current project 
+
+
+QWhat are some of the workplace successes that make you proud?
+AI got many client appreciations for my quick work and for my efforts
+
+Q--How to resolve workplace conflicts
+A--“I believe it is essential to resolve all conflicts with coworkers as soon as possible without involving the upper management or other individuals. Conflicts become harder to resolve if they persist for long periods. However, most conflicts occur because of miscommunication, so I schedule a meeting with the relevant individuals and allow everyone to express their views. This allows us to resolve the conflict effectively.”
+
+QWhat motivates you at work?
+A“I am motivated by the desire to help guide all of my team members to success. For example, I remember when I was helping one of my team members complete a new task. I provided them with examples of similar tasks I completed in the past and some helpful tips. They ended up receiving praise for this task and it fulfilled me knowing I helped them accomplish success."
+
+Q--What was the best catch you ever made?
+A-- Many time, i got client approeceations for my good work. 
+1 incident in this current compay: it was my first day of KT. my senior gave me kt of the application and hand over me to hands on the application. On that first day, I found i very good bug in theri application which was missed by our whole team QA. Than they appreciate me on the very first day
+2 Incident from my personal life: My father in law is Bank Manager and it;s govt bank. And he gave us 2023 calender in which i found typo mistake about "follow" spelling
+
+QHow much time is enough time to test for a release?
+A when we met the client req and every defect is in closed state and all the test results are positive (like no bug in regression testing and in UAT testing)
+
+QWhat if you missed bug and end user detect it?
+AFirst chill. Then you should focus on how quickly to resolved it. Then :
+
+1)Root cause of the bug
+	-try to replicate the bug in lower env or not
+	-is there any kind of miscoummincation in the requirement or not
+
+2) Than you should make sure it should not repeat next time and must add in regression suite or some checklist
+
+3) Accept the mistake as you are part of the team if it's staright forward scenario.
+
+Check what is your test coverage.
+Try to achieve 100% test coverage(UT, FT, IT, UAT).
+Try to have a better regression suite. If you already not have it , invest to build it.
+If TC for that bug is not in TC or Regression suite, than add to it
+If is is present in Regressions uite, than verify the evidence attached with TC
+
+Also check whther it is replicating in prod only or in QA env also.
+
+
+Also, in software world bugs do come. Accept it. Should always focus on how quickly to resolve it and not repeat it and in resolving one should not open another.
+
+
+----------------------
+why to siwtch from CHD to Siuth side
+A/; I want to learn and want to work in new challenging env as I know chandigrah env is ttoally differnt than south side ennv. Why bec:
+people are more prosfessional in south like in every aspect
+more big projects are there
+
+
+----------------------
+
+*******what you do when yu find critical bug at the end of the sprint?
+-Than i will discuss with PO or Team lead that is that a valid to fix in current sprint or not ?
+If yes, than we consider this as hot fix and wait for the fix and than will test and quickly execute the regression.
+If no, than we will move it to next sprint and fix in next sprint.
+
+
+********Where you see yourself after 5 years 
+-I am very passionate about test automation tools and technology like UiPath and I would love to automate the stuff which is getting repeated multiple times during our test cycles. I also create automation script to delete spams emails from gmail
+-I would like to become best in my work in next 5 years.
+-I would now like to take on managerial responsibilities. I want to become a leader with several teams working on different projects simultaneously and keeps on learning. Considering the number of projects your organisation runs, I believe I can work towards that aspiration."
+
+
+********Hobbies : spendin time with family
+lovinf dogs, 
+cycling and every day to cover more and more area
+
+
+Q--what is your goal (entire life)??: I would like to become best in my work and will be role model for my children.
+
+Q--If one of your colleague is not working. then how will you encourage him??
+A--Tips for helping and supporting colleagues at work
+
+	 Communicate often: schedule meeting and unserdtand it's concern.
+	Recognize their challenges
+	Volunteer your time
+	 Give advice
+	Offer praise
+***A performance improvement plan (PIP) is a document that aims to help employees who are not meeting job performance goals. 
+
+Q--Why should I hire you??????
+https://testertips.com/why-should-we-hire-you-as-a-software-tester-2/
+Companies want to hire software testers that are passionate about testing, about finding faults in their software, and who bring constructive criticism for delivering great products.
+-Passion for Software Testing
+-Out of the Box Thinking
+I also awareded with 2 champ award recemtly lastyear for Q4 awards in dxc for my performance
+So I believe I'm suitable candidate for this role in your reputaed company...I will prove my self if you gave me a chance
+
+Q--Bigest Achievement:
+that got 2 champ awarads during one year
+
+Q--what you do if you have very less time to perform testing
+-However, in order to assess the priority, look at the risks and prioritize based on the requirements and their business impact and priorities. 
+
+Q-- what is your improvement arrea
+A-- Communication skills- which i keep on improving 
+
+Q--What you think that tester should have qulity
+A-- Out of Box thinking - to create TC
+ 	Exellent Communicaation Skills
+	Quick and Continous learning(Technical Tools and Technical Knowlegde): learning new technologies which helps you in keeps you updated in market
+	wise time mangement: plan before execution to save time 
+	
+
+Q--what is your contribution to the project with technical or process?
+A-- I made enchancement in existing automation framework
+	-By removing redundent code
+	-By increase performance of the execution by cut down irrelevant waits 
+	-By updating proper logging information
+	2) By asking dev team to surrender APIS during UI development phase, so that we can find the bugs earlier at the early satage and as per the thumb rule, when we find the error at early stage, it save time/cost and efforts
+	3)Earlier , we were using the screenshot process to store our evidence whiel executing TC BUT now we are using video recordings bu using ppt :)
+
+Q--what you do from the starting if you are only one to implement the process
+A-- https://www.softwaretestinghelp.com/how-to-write-test-plan-document-software-testing-training-day3/
+
+Q--what you do if there is bug leakage
+
+Q--what you do if your team member missing imp bug/ Not working properly
+
+Q--what is your latest critical/ good bug catches
+A--Unathorised person can also have full access of the application or roles of admin by just tweak the url of the resource in browser. And this issue is occuring in most of our applications
+2)
+
+Q--what you do if developer rejects your bug
+A-- Unseratnd their concern.
+	-schedule a meeting and show them by these steps you can reproduce the bug
+	-tell him this is the impact of this bug on application and on business flow
+	-
+
+Q--How would you start automation tetsing from start
+
+Q--Daily testing activities
+
+
+--------------
+
+****Strength
+self motivation
+hard working
+passinate about testng
+punctioual
+pateince
+
+
+*****Weakenss
+i do nt bother about food sometimes when I depply involved in work
+i do not say No to my Manager for weekends
+
+==================
+
+Challenges:
+
+>>When dev team lately surrender new build to QA team. Then we have very less time to test all the features + perform regression testing. - So then we will extend our working hours + prioritixxe the test cases as per the client req(or main functionality of the app whihc is using by client on daily basis) and execute them
+
+>>When there is new req from the client that we need to implemet new things with new technology, than there is slightly challenging situation is there. Because we need to work on daily raotuine tasks + learn the new automation tool side by side.
+EX:
+learn AUTO IT to handle the windows based stuff
+learn UIPath to handle desktop apps
+migrate from log4j to logback 
+upgrade from old selenium version to new version 4.6.0
+
+>>We are migrating from old java aplications to new javascript application where we see lot of complex DOM to locate the elements like lot of ajax calls are there. 
+overcomes: 
+with diff strategies like
+	ThreadSleep
+	Implicit Wait
+	Explicit Wait
+	WebdriverWait
+	Fluent Wait
+Ajax Calls:
+It will updates the part/s of a web page without reloading the whole page.
+
+Overcomes:
+By container = By.cssSelector(".container");
+		wait = new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.presenceOfElementLocated(container));
+		wait.until(ExpectedConditions.visibilityOf(TextElement));
+
+>>Testing phase is usually under a time constraint
+>>Understanding the requirements can sometimes be a challenge
+>>Lack of skilled testers
+>>Frequent Requirements changing
+>>Lack of tools, resource, and training
+
+===================
+Roles and Responsibilities
+
+>>Analyzing and understanding business requirement in order to achieve the goals of testing
+>>Developing, Maintaining and executing existing tests scripts/regression suites
+>>Preparation of test scenarios/cases/execution and test results.
+>>Reporting any defects / Observation on day to day basis
+>>Implemented automation using Selenium WebDriver, JAVA, Selenium Grid, Cucumber, Maven
+
+>>Attending Agile meetings (Daily scrum meeting/Sprint planning/Backlog refinement) on assigned projects
+>>Attending the client calls and meetings
+
+>>Providing results to project managers/developers/manual testers and stakeholders
+
+>>Involved in knowledge transfer to the newly recruited personnel
+=============================
+US template:
+
+AS AN Account Manager
+I WANT a sale report of my account
+to be sent to my inbox daily
+SO THAT I can monitor the sales
+progress of my customer portfolio
+
+Acceptance Criteria:
+1) The report is sent daily to my inbox
+2) The report contains the following sale detsils...
+3) The report is in csv formart.
+
+OR 
+Acceptance Criteria:
+Scenario: ...
+Given
+When
+Then
+
+
+================================
+
+***********Bug Priority is finalized by the manager in consultation with the client. 
+***********Bug Severity is determined by the QA engineer.
+
+>>Bug Severity or Defect Severity in testing is a degree of impact a bug or a Defect has on the software application under test
+-Critical
+-Medium
+-Low
+-High
+
+>>Priority is defined as the order in which a defect should be fixed. Higher the priority the sooner the defect should be resolved.
+-Low
+-Medium
+-High
+
+==================================
+
+BUG Life Cycle
+
+New
+|
+Assigned || Duplicate || Rejected || Deffered || Not a Bug/Invalid || Wont fix || Need more info
+
+|
+Active
+|
+Ready for Testing
+|
+Closed || Reopen
+
+=============
+STLC
+In an Ideal world, you will not enter the next stage until the exit criteria for the previous stage is met
+you should have entry and exit criteria
+
+Requirement Analysis
+	-Identify types of tests to be performed.
+	-Gather details about testing priorities and focus.
+	-[]--Prepare Requirement Traceability Matrix (RTM).
+	-Identify test environment details where testing is supposed to be carried out.
+	-Automation feasibility analysis (if required).
+
+Test Planning
+	-Preparation of test plan/strategy document for various types of testing
+	-Test tool selection
+	-Test effort estimation
+	-Resource planning and determining roles and responsibilities.
+	-Training requirement
+
+Test case development
+	-Create 	test cases, automation scripts (if applicable)
+	-Review and baseline test cases and scripts
+	-Create test data (If Test Environment is available)
+
+Test Environment setup
+	-Understand the required architecture, environment set-up and prepare hardware and software requirement list for the Test Environment.
+	-Setup test Environment and test data
+	-Perform smoke test on the build
+
+Test Execution
+	-Execute tests as per plan
+	-Document test results, and log defects for failed cases
+	-Map defects to test cases in RTM
+	-Retest the Defect fixes
+	-Track the defects to closure
+	[][]-Completed RTM with the execution status
+
+Test Cycle closure
+
+==============
+SDLC
+
+Requirement analysis
+Planning
+Software design such as architectural design
+Software development
+Testing
+Deployment
+
+=============
+Types of testing
+
+1) Static Testing
+	-review
+	-walkthrough
+	-inspection
+
+
+
+2) Dynamic Testing
+I) Functional Testing
+I.a) White Box Testing
+	-Unit Testing
+	-Code/Statement/Path
+	-Branch Coverage
+
+I.b) Black Box Testing	
+	-Integration testing
+	-Smoke/Sanity testing
+	-Functionality Testing
+	-Regression Testing
+	-System Testing
+	-UAT
+
+
+II) Non-Functional Testing
+	-Load & Stress Testing
+	-Compatibility Testing
+	-Security Testing
+	-Recovery Testing
+	-Usability Testing
+	-Cookies Testing
+
+
+------------------
+Factors should keep in mind before automating anything from scratch:
+
+>>UNDERSTAND THE REQ::  understand the req from client taht which flow need to be automated and what is the expectation of the client from this automation suite. who and how will use this framework(by jenkins or by cmd). It should be understandable by both techincal + non technical person
+
+>>PRODUCT STABILITY:: is product stable or not? if stable than proceed further
+
+>>KNOWLEFGE OF PRODUCT::  deep knwoldge of product which need to be automated. sometimes more than one way to do the task. so which is good and most reliable to automate.
+
+>>BUILD TOOL:: need to follow proper build management tool, so that it can be understand and maninted by other people also like MAVEN follows some standards
+
+>>CORRECT FRAMEWORK:: Correct framework according to the requirement. If it is for everyone, then BDD. 
+Data Driven Automation Framework
+Keyword Driven Automation Framework
+Modular Automation Framework
+Hybrid Automation Framework
+Linear Scripting Framework
+Behavior Driven Development Framework
+
+
+>>GOOD DESIGN:: Reduce redunancy like following POM desing pattern
+
+>>CHOOSE AUOMATIOMN TOOL ACC TO BUDGET:: which automation tool need to select acc to budget and req. like QTP, TOSCA is paid and selenium is open source
+
+>>TEST DATA & CONFIGURATION SHOULD BE SEPARATE:: test data and configuration should always be seprate , so that it can be configure at run time
+
+>>EASY INTEGRATION:: Easily integrate with thrid party tool
+
+>>MAINTAINCE:: manintaince should be easy
+
+>>REPORT:: Good reporting acc to the req. Some prefer: email report and some do not
+
+
+Reports and Logs: Test automation framework should provide all the details required for test execution. Logs should be provided with necessary details of problem along with the custom message.
+
+Scripts and Data Handling: Input test data should be kept separated from the Automated test scripts.
+
+Library: Library should contain the external connections such as databases, application & generic functions as well as all the reusable components.
+
+Scripting Standards: Maintain a coding standard across the test automation framework is necessary.
+
+Well Organized Framework: An organized framework provide support for addition of new features and easy integration with automation tools and third party tools etc.
+
+Configuration Options: Framework should provide an option to select the configurations at run time so that it can be used as per the test execution requirement.
+
+Good Design: Test design should be such that the application locators are separated from the test code so that the locators can be updated independently in the locator file. Test data should be separated from the code and pulled from the excel, csv or xml file and data can be updated whenever required.
+
+Framework Versioning: Various versions of framework should be maintained in a local repository which would further help in easy monitoring of the changes made to the software code.
+
+Extensibility and Maintenance: An ideal test automation framework should withstand all new enhancements to the software application and allow modification of the existing features.
+
+=======================================
+
+TEST ESTIMATION(in Manual):
+
+Estimating effort for the test is one of the major and important tasks in Test Management.
+
+The following factors are taken into consideration to estimate:
+
+1) Time: How much time testing will take
+2) Cost Required
+3) Team member(s) needed: Team Count
+4) Skills required
+
+Techniques:
+1) Work Breakdown Structure: In WBS, a testing task gets broken down into smaller modules, and those modules are further divided into measurable sub-modules.
+
+2) 3-Point Software Estimation:  Three-point estimation is based on statistical data
+In the three-point estimation, three values are initially produced for every task based on previous experience. For example, to complete a specific task the different possibilities are
+
+	Best case estimate: 120 man-hours or 15 days with experienced team members
+	The most likely estimate: 170 hours or 21 days with enough resources and moderate team members experience
+	The worst-case estimate: 200 man-hours or 25 days and with a team that has lesser work experience
+
+
+3) Wideband Delphi Method
+4) Use-Case Methodologies
+5) Distribution in Percentage
+6) Method of Ad-Hoc
+7) Functional Point Analysis
+
+
+
+TEST ESTIMATION(in Automation):
+
+
+Before you begin with estimating any project, it is imperial to understand each and every phase that your project will be going through, so that you can give a correct and a justified estimation.
+Factors:
+1) Scrope of the project: Scope typically means identifying the correct test cases for automation.
+
+
+2) Compleity of the Application
+3) Use of Suporting tools/tecnologies
+4) Implement the Framework
+5) Learning & Training
+6) Env setup
+7) Coding/scripting and review
+
+
+*****CHART:
+take refernce of ss in onenote
+Total efforst for each test case: 5 hrs * 4(test case) for very simple TC
+Total efforst for each test case: 3 hrs * 3(test case) for  simple TC
+Total efforst for each test case: 2 hrs * 4(test case) for  complex TC
+
+Additional effprst for:
+Review
+Rework
+Execute & Dry Run
+Framework Design
+Training Needed
+
+
+===========================================
+
+ROI(return on investment):
+Calculating ROI on test automation is a measurement of how much QA time test automation saves.
+
+ROI = Savings
+	-------
+	Investment
+
+Saving = [Time to run a single manual test – time to run the same test in automation]x Number of test x Number of test runs.  
+
+Investment = time required to build frameworks + maintenance cost + (time to code one tests X number of tests)

@@ -1,0 +1,23 @@
+
+
+Kaiser Permanent:
+-Health Care company
+-Based in Oakland, California, United States, 
+-founded in 1945 
+-Under KP, we have mulitple application some are of end users and some are of inhouse applications which is widelt used for consultants and different vendor to manage the data of each consultants.
+
+CYD: Choose your doctor is the main app where we can book our appointment with doc online. by selecting region and doctor type
+
+We have regression and Smoke suite is there from automation part.
+
+We have two types of automation project:
+One is testing automation projects
+Another is provindg Automation services to the client like
+client have to perofrm alot of manual actions for onbaording each pysician like creating unique idenety and difference access requests....so that all is done with the help of automation and that is running daily in production.
+
+
+
+
+
+-----------------------------------
+

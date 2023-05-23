@@ -1,0 +1,215 @@
+for pratise:
+1) create maven
+2) add below
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>7.10.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-junit</artifactId>
+    <version>7.10.0</version>
+    <scope>test</scope>
+</dependency>
+
+3) and convert your project into BDD
+4) and run
+
+>>When any of the step if failed in Scenario , than rest of the steps will skipped.
+>>Whe have html report generated at specfied location. When we open that report in browser, it will show proper pass, failed and skipped with proper exception
+
+>>we use @Before and @After Hook. 
+But it should present in StepDefinition package
+it will run before and after every scenario
+
+
+>>if any line is failed, than we should write the code in @AfterStep liek below:
+@AfterStep
+	public void afterStep(Scenario sc) {
+		if(sc.isFailed())
+		System.out.println("this is AFTER STEP");
+	}
+
+if we cant mention sc.isfailed(), than this @AfterStep will run after every line of feature(like after given when then and but)
+
+>>@Before hook will run before Background
+
+
+>>run from cmd: mvn clean test -Dcucumber.feature="path/to/feature-files" -Dcucumber.filter.tags="@Your_tag"
+
+-------------------
+In cucumber we have Feature file, Step Definition file and Test Runner file.
+In feature file we used to write scenario in gherkin language which is most like in plain English language. 
+Here we use some of the keywords like feature, scenario, scenario outline, given, when, then, and,
+example, background keywords for writing our test scenarios steps.
+In Step Definition file we write mapping code for all the scenario of feature file.
+In test Runner file we provide the address of the feature file, step definition file, and all-important Tags, 
+Plugin, Listeners in that.
+--------------
+
+Background: Background is used when we have some common Given part. Suppose we have pre-condition that we 
+have to check this before each scenario. so in order to avoid rewriting same step we can write it in 
+Background. 
+---------------
+Dry Run: Dry run is not running our whole application it will check whether all features are mapped with Step 
+definition.
+---------------
+Hooks:
+In cucumber we use hooks for common functionalities, hooks are like we want to run before & after each 
+of the scenario. In hooks we have 2 different @before, @ after which run before and after of each 
+scenario. Also @beforestep, @afterstep which run before and after each step
+------------------
+ Can you tell me how you will re-run failed scenario in cucumber?
+For that we can use re-run attribute in our test runner file. After that we can write one file location. 
+Where all the test cases which failed while execution get stored. So next time while running execution we 
+can give this file location and run the failed TC.
+-------------------------
+BDD
+to execute the same code with multiple test data called parametrisation in cucmber
+
+datra driven is achieved by 
+SCENARIO OUTLINE: Data Parametrisation(Scenaio outline...|username|password|) 
+DATATABLE::  DataTable(DataTable data)
+
+difference is DataTable only provide the data only single time to test case but same code is running everytime for each typoe of data in data paramertisation.
+
+>>to run filtered test cases, than we use tags="@SMOKE or @REGRESSION" --it runs with only tags either @SMOKE or @RGERESSION
+tags= "not @SMOKE" --it runs all tags except @SMOKE test cases
+if we use tags= "@SMOKE and @REGRESSION" --it runs all the scneaiors which have only @SMOKE @REGRESSIOn tags 
+
+-in whichever class, bacground is mentioned, it will run before every test cases of that class only in which it defined
+
+-background defined in class A, And background code will execute before every scenario defined in that class
+
+-If yu want to run the code as pre-requiste before any particular test case than define Hooks 
+@Before("@MobitTestCases")
+public void abc()
+{}
+
+...so it will run only before those test cases/sceanrios which is tagged with @MobileTestCases
+
+we can define multiple hooks(@Before and @After) in class...like for @MobileTestCAses and @WebTestCases
+
+dryRun=true-->if we set it as true , than it will check the mapping of feature files with setpdefinition witjout run\
+
+monochrome=true-->it beautify the console output and prevent to show fancy symbols....
+
+strict=true -->it check the mapping and if there is mis mapping than it will fail
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+-no we dont use hooks coz we have same pre-requiste for every scenario
+-if there is any failure on any step, than we implement @AfterStep which will execute after every step and we should write code of scenreshot in cucumber
+@AfterStep
+public void aftereverystep(Scenario scenarios)
+{
+if(scenarios.isFailed(){
+
+sc code
+}
+}
+
+-to rerun the failed scenario, we just enter rerun:target/faileTestcases.txt in plugin and just configure the and create another TestRUNNER class with feature= @target/failedtestcases.txt" glue=...} 
+so it will run twice 
+
+----------------------------------------------
+
+
+
+
+<<BDD>>
+Scenario outline: The Scenario Outline keyword can be used to run the same Scenario multiple times, with different combinations of values.
+
+Background: Sometimes you’ll find yourself repeating the same Given steps in all of the scenarios in a feature.
+Since it is repeated in every scenario, this is an indication that those steps are not essential to describe the scenarios. You can literally move such Given steps to the background, by grouping them under a Background section.
+
+Monochrome: Display console output in readable way
+
+Glue: it helps Cucumber to locate theStep Definition file.Whenever Cucumber encounters a Step, it looks for a Step Definition inside all the files present in the folder mentioned in Glue Option.
+
+Feature: The purpose of the Feature keyword is to provide a high-level description of a software feature, and to group related scenarios.The first primary keyword in a Gherkin document must always be Feature, followed by a : and a short text that describes the feature.
+
+plugin: plugin Option is used to specify different formatting options for the output reports.
+
+Format: It will define the format of the reports. Options are pretty,html,json,junit.
+Note – Format option is deprecated . Use Plugin in place of that.
+
+RunWith:This is a JUnit annotation that specifies which runner it has to use to execute this class
+
+CucumberOptions: This annotation provides some important information which will be used to run your cucumber feature file.
+
+ Given: It is for pre condition
+    When: Test action that will get executed
+    Then:It defines the expected result.
+
+    Add: Add conditions to step
+
+    But: It is used to add negative type comments
+
+    Strict:with true as opted value, It will fail execution if any undefined or pending steps found.
+  
+    dryRun: Check if all steps have step definition
+    
+	tag:
+    The tags can be used when specifying what tests to run through any of the running mechanism.
+    @RunWith(Cucumber.class)
+    @CucumberOptions(
+                  features = “src/test/“,
+                  tags ={“@Web“},...  )
+    Cucumber can exclude scenarios with a particular tag by inserting the tilde character before the tag.
+    For the following command will run all Scenarios without the UI tag.
+    @RunWith(Cucumber.class)
+    @CucumberOptions(
+                  features = “src/test/features“,
+                  tags ={“~@UI“},...  )
+
+
+>>
+Test Driven Development (TDD)
+Rather than a test type per se, TDD is an iterative development methodology in which tests drive the design of a feature.
+
+Each cycle starts by creating a set of unit tests that the feature should eventually pass (they should fail their first time executed).
+
+After this, development takes place to make the tests pass. The tests are executed again, starting another cycle and this process continues until all tests are passing.
+
+This aims to speed up the development of an application based on the fact that defects are less costly the earlier they are found.
+
+>>
+Behavior-driven development (BDD)
+BDD is also an iterative development methodology based on the above TDD, in which the goal is to involve all the parties in the development of an application.
+
+Each cycle starts by creating some specifications (which should fail). Then create the failing unit tests (which should also fail) and then do the development.
+
+This cycle is repeated until all types of tests are passed.
+
+In order to do so, a specification language is used. It should be understandable by all parties and simple, standard and explicit. Most tools use Gherkin as this language.
+
+The goal is to be able to detect even more errors than TDD, by targeting potential acceptance errors too and make communication between parties smoother.
+
+A set of tools are currently available to write the specifications and match them with code functions, such as Cucumber or SpecFlow.
+A set of tools are built on top of Selenium to make this process even faster by directly transforming the BDD specifications into executable code. Some of these are JBehave, Capybara and Robot Framework.
+
+>> Given I have "username" and "password"
+
+--@Given("^I enter Username as \"([^\"]*)\" and Password as \"([^\"]*)\"$") 
+   public void I_enter_Username_as_and_Password_as(String arg1, String arg2) {
+
+--@Given("I have {String} and {String} ")
+	public void...(String String , String String2)
+
+>>in scenaro outline 
+Scenario Outline: Successful Login with Valid Credentials
+	Given User is on Home Page
+	When User Navigate to LogIn Page
+	And User enters mandatory details of "<TextCase>" 
+	Then Message displayed Login Successfully
+	Examples:
+    |TextCase| 
+    |Case1   |
+
+
+
+>>A Background is run before each scenario, but after any Before hooks.
+-Use Background when you provide customer-readable pre-conditions to your scenarios
+-Use Before when you have to do some technical setup before your scenarios

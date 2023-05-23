@@ -1,0 +1,291 @@
+
+SMOKE TESTING(subset of Acceptance testing)
+Smoke Testing is performed to ascertain that the critical functionalities of the program is working fine
+The objective of this testing is to verify the “stability” of the system in order to proceed with more rigorous testing
+This testing is performed by the developers or testers
+Smoke testing is usually documented or scripted
+Smoke testing is a subset of Acceptance testing
+Smoke testing exercises the entire system from end to end
+
+
+SANITY TESTING(subset of Regression Testing)
+Sanity testing is a kind of Software Testing performed after receiving a software build, with minor changes in code, or functionality, to ascertain that the bugs have been fixed and no further issues are introduced due to these changes. The goal is to determine that the proposed functionality works roughly as expected. If sanity test fails, the build is rejected to save the time and costs involved in a more rigorous testing.
+Sanity Testing is done to check the new functionality/bugs have been fixed
+The objective of the testing is to verify the “rationality” of the system in order to proceed with more rigorous testing
+Sanity testing in software testing is usually performed by testers
+Sanity testing is usually not documented and is unscripted
+Sanity testing is a subset of Regression Testing
+Sanity testing exercises only the particular component of the entire system
+
+
+The four scrum ceremonies are:
+Sprint Planning.
+Daily Scrum.
+Sprint Review(show demo).
+Sprint Retrospective(focus on process, what went well and what not).
+
+
+---------------------------------------
+BDD
+
+BDD is framework
+cucumber is tool
+
+BDD framework i.e. Behavior Driven Development is a software development approach that allows the tester/business analyst to create test cases in simple text language (English).
+Test scenarios are written separately in a different file, named as Feature file.
+Tests are written by focusing user stories and system behavior in a layman language.
+Code is subject to be written differently in step definitions file i.e. Java, Python.
+
+Before the BDD framework, everyone was using TDD. TDD works fine in software development, provided the stakeholders are familiar with the framework being used and their technical knowledge is sufficient. However, this may not be the case always.
+
+BDD provides a path that acts as a bridge to overcome the gap between the technical and the non-technical teams because the test cases are commonly written in simple text, i.e. English. The main advantage of BDD is the low jargon and clearer approach which is easier to understand.
+Cucumber is a Behavior Driven Development (BDD) framework tool to write test cases.
+-------------------------------------------
+
+
+Agile(it's methodology)
+
+-The Agile software development methodology is one of the simplest and effective processes to turn a vision for a business need into software solutions
+-it propose incremental and iterative approach to software design
+-the whole project is dived into different modules and each module is developed in each sprint
+-In the Agile model in software testing, both development and testing activities are concurrent, unlike the Waterfall model.
+-Development process is iterative, and the project is executed in short (2-4) weeks iterations. Planning is very less.
+-Agile process in software engineering is broken into individual models that designers work on
+-customer has early and frequent opportunities to look at the product and make decision and changes to the project
+-Error can be fixed in the middle of the project.
+-Testers and developers work together
+-At the end of every sprint, user acceptance is performed
+-Every iteration has its own testing phase. It allows implementing regression testing every time new functions or logic are released.
+-In agile testing when an iteration end, shippable features of the product is delivered to the customer. New features are usable right after shipment. It is useful when you have good contact with customers.
+
+
+SCRUM(it's agile method)
+SCRUM is an agile development method which concentrates specifically on how to manage tasks within a team-based development environment
+
+Agile and Scrum consist of three roles, and their responsibilities are explained as follows:
+(1)-Scrum Master: Scrum Master is responsible for setting up the team, sprint meeting and removes obstacles to progress
+(2)-Product owner: The Product Owner creates product backlog, prioritizes the backlog and is responsible for the delivery of the functionality at each iteration
+(3)-Scrum Team: Team manages its own work and organizes the work to complete the sprint or cycle
+-Team works on the defined sprint backlog
+-Team checks for the daily work
+-At the end of the sprint, team delivers product functionality
+
+
+Product Backlog: This is a repository where requirements are tracked with details on the no of requirements(user stories) to be completed for each release. It should be maintained and prioritized by Product Owner, and it should be distributed to the scrum team. Team can also request for a new requirement addition or modification or deletion
+
+SCRUM CEREMONIES:
+(1)-Sprint Planning: which US are going for release, assignment? testing
+(2)-Sprint:During each Sprint, top user stories of Product backlog are selected and turned into Sprint backlog
+(3)-Daily Scrum Meet
+(4)Sprint Review Meeting
+(5)-Sprint Retrosepctive Meeting
+
+
+
+SPRINT REVIEW
+At the end of each Sprint, the team looks at what deliverables have been shipped or marked as done.
+ During the sprint review, the scrum development team, product owner, and business stakeholders gather together to discuss the sprint results. 
+what they developed and show demo to client
+Sprint Review focuses on the product, improve the product,
+1) Demonstration
+During the demonstration part, the development team presents what was done during the sprint
+2) Discussion With Business Stakeholders(Feedback)
+After the development team or the product owner presents the results of the sprint, the business stakeholders give their feedback to and ask questions about the finished product or increment to the scrum team. 
+3) Product Backlog Update
+During or after the sprint review discussion the product owner may update the product backlog, prioritizing user stories, updating their descriptions, adding new user stories, or removing them from the product backlog altogether.
+participants: Scrum team (including the scrum master and product owner), various business stakeholders
+
+SPRINT RESTROSPECTIVE
+Sprint Retrospective focuses on the process that is impacted to the sprint results, improve the process. 
+it’s conducted after the sprint is finished, and this means ‘really finished’, so after the sprint review too. 
+Because Sprints are inherently about teamwork, Sprint Retrospectives seek to improve the overall Sprint process, encourage certain actions
+What wentll? well?
+What did not go so we
+What actions need to be taken to improve?
+participants: Scrum team (including the scrum master and product owner)
+
+
+
+
+Process flow of scrum testing is as follows:
+-Each iteration of a scrum is known as Sprint
+-Product backlog is a list where all details are entered to get the end-product
+-During each Sprint, top user stories of Product backlog are selected and turned into Sprint backlog
+-Team works on the defined sprint backlog
+-Team checks for the daily work
+-At the end of the sprint, team delivers product functionality
+
+
+---------------------------------------
+
+-------------------
+STLC https://www.guru99.com/software-testing-life-cycle.html
+Requirement Analysis
+Test Planning
+Test case development
+Test Environment setup
+Test Execution
+Test Cycle closure
+
+Entry Criteria: Entry Criteria gives the prerequisite items that must be completed before testing can begin.
+Exit Criteria: Exit Criteria defines the items that must be completed before testing can be concluded
+-----------------------------
+
+
+
+
+-----------
+Source(https://pmo.its.uconn.edu/2017/09/21/test-strategy-versus-test-plan/#)
+TEST STRATEGY:
+Test Strategy describes how testing needs to be done that what APPROACH need to take .
+Test Strategy is used at the organization level.
+Test Strategy can’t change.
+A Test Strategy document is a high level document and normally developed by project manager. 
+This document defines “Software Testing Approach” to achieve testing objectives. 
+The Test Strategy is normally derived from the Business Requirement Specification document.. A high level document describing the way testing is carried out.
+Components of Test strategy includes- objectives and scope, documentation formats, test processes, team reporting structure, client communication strategy, etc.
+The Test Strategy document is a static document meaning that it is not updated too often. 
+It sets the standards for testing processes and activities and other documents such as the Test Plan draws its contents from those standards set in the Test Strategy Document.
+
+Components:
+
+
+Scope and Objectives
+Business issues
+Roles and responsibilities
+Communication and status reporting
+Test deliverables
+Industry standards to follow
+Test automation and tools
+Testing measurements and metrices
+Risks and mitigation
+Defect reporting and tracking
+Change and configuration management
+Training plan
+
+
+TEST PLAN
+Test PLAN(describe what to test, how to test, when to test and who will do what test(regression, smoke, sanity...):
+TYPES OF TEST PLAN: 
+Level-specific test plan: It includes planning for Unit testing, Integration testing, and System testing.
+Type-specific test plan: It includes planning for key parameters, such as performance.
+Master test plan: This comprehensive QA test plan features high-level information and details of the overall testing process. This plan rarely undergoes any revisions.
+
+Test Plan is used at the project level
+Test Plan can be changed
+Components of Test plan include- Test plan id, features to be tested, test techniques, testing tasks, features pass or fail criteria, test deliverables, responsibilities, and schedule, etc.
+a blueprint of how the testing activity is going to take place in a project.
+ document drived from SRS describing scope of testing and activites to be perfomed
+The Test Plan document is usually prepared by the Test Lead or Test Manager and the focus of the document is to describe what to test, how to test, when to test and who will do what test.
+
+Components:
+Test Plan id
+Introduction
+Test items
+Features to be tested
+Features not to be tested
+Test techniques
+Testing tasks
+Suspension criteria
+Features pass or fail criteria
+Test environment (Entry criteria, Exit criteria)
+Test deliverables
+Staff and training needs
+Responsibilities
+Schedule
+-------------------
+
+BackLog Grooming: Grooming (or refinement) is a meeting of the Scrum team in which the product backlog items are discussed and the next sprint planning is prepared.
+Product grooming is critical in product management because it means keeping the backlog up to date and getting backlog items ready for upcoming sprints.
+Backlog grooming is often named pre-planning. The product owner and team representatives arrange it in the mid-sprint time. In this case, planning and refinement meetings alternate but happen on the same day each week. That provides an effective rhythm for the entire team.
+Removing uncertainty and unknown facts of user stories increase the product’s efficiency.
+It assists to avoid rework in development and testing.
+Backlog grooming identifies the dependencies within the team and helps to foresee risks.
+----------------------------
+
+Burn down chart
+Burn-down charts aid the Scrum team to keep track of their progress and what needs to be done to meet the sprint goal.
+The sprint tracking is usually done using Burn-Down Chart. Burn-Down Chart shows the remaining effort in day-wise number of hours. For example, let us consider a 2-week sprint -
+
+Sprint Duration: 2 Weeks
+
+No. of Days per Week: 5
+
+No. of Hrs. per Day: 6
+
+No. of Resources: 6
+
+Hence, total remaining effort at the beginning of sprint is 2*5*6*6 = 360 hrs.
+
+---------------------------------------------------------------------------------
+RTM(every requirement is covered in the form of a Test case)
+Traceability matrix is a table type document that is used in the development of software application to trace requirements. 
+It is prepared before the test execution process to make sure that every requirement is covered in the form of a Test case so that we don't miss out any testing. In the RTM document, we map all the requirements and corresponding test cases to ensure that we have written all the test cases for each condition.
+The test engineer will prepare RTM for their respective assign modules, and then it will be sent to the Test Lead. The Test Lead will go repository to check whether the Test Case is there or not and finally Test Lead consolidate and prepare one necessary RTM document.
+This document is designed to make sure that each requirement has a test case, and the test case is written based on business needs, which are given by the client. It will be performed with the help of the test cases if any requirement is missing, which means that the test case is not written for a particular need, and that specific requirement is not tested because it may have some bugs. The traceability is written to make sure that the entire requirement is covered.
+
+------------
+
+What is UAT?
+User Acceptance Testing (UAT) is a type of testing performed by the end user or the client to verify/accept the software system before moving the software application to the production environment. UAT is done in the final phase of testing after functional, integration and system testing is done.
+
+Purpose of UAT
+The main Purpose of UAT is to validate end to end business flow. It does not focus on cosmetic errors, spelling mistakes or system testing. User Acceptance Testing is carried out in a separate testing environment with production-like data setup. It is kind of black box testing where two or more end-users will be involved.
+
+------------------------
+
+>>UNDERSTAND THE REQ::  understand the req from client taht which flow need to be automated and what is the expectation of the client from this automation suite. who and how will use this framework(by jenkins or by cmd). It should be understandable by both techincal + non technical person
+
+>>PRODUCT STABILITY:: is product stable or not? if stable than proceed further
+
+>>KNOWLEFGE OF PRODUCT::  deep knwoldge of product which need to be automated. sometimes more than one way to do the task. so which is good and most reliable to automate.
+
+>>BUILD TOOL:: need to follow proper build management tool, so that it can be understand and maninted by other people also like MAVEN follows some standards
+
+>>CORRECT FRAMEWORK:: Correct framework according to the requirement. If it is for everyone, then BDD. 
+Data Driven Automation Framework
+Keyword Driven Automation Framework
+Modular Automation Framework
+Hybrid Automation Framework
+Linear Scripting Framework
+Behavior Driven Development Framework
+
+
+>>GOOD DESIGN:: Reduce redunancy like following POM desing pattern
+
+>>CHOOSE AUOMATIOMN TOOL ACC TO BUDGET:: which automation tool need to select acc to budget and req. like QTP, TOSCA is paid and selenium is open source
+
+>>TEST DATA & CONFIGURATION SHOULD BE SEPARATE:: test data and configuration should always be seprate , so that it can be configure at run time
+
+>>EASY INTEGRATION:: Easily integrate with thrid party tool
+
+>>MAINTAINCE:: manintaince should be easy
+
+>>REPORT:: Good reporting acc to the req. Some prefer: email report and some do not
+
+
+
+
+
+
+
+
+
+
+Reports and Logs: Test automation framework should provide all the details required for test execution. Logs should be provided with necessary details of problem along with the custom message.
+
+Scripts and Data Handling: Input test data should be kept separated from the Automated test scripts.
+
+Library: Library should contain the external connections such as databases, application & generic functions as well as all the reusable components.
+
+Scripting Standards: Maintain a coding standard across the test automation framework is necessary.
+
+Well Organized Framework: An organized framework provide support for addition of new features and easy integration with automation tools and third party tools etc.
+
+Configuration Options: Framework should provide an option to select the configurations at run time so that it can be used as per the test execution requirement.
+
+Good Design: Test design should be such that the application locators are separated from the test code so that the locators can be updated independently in the locator file. Test data should be separated from the code and pulled from the excel, csv or xml file and data can be updated whenever required.
+
+Framework Versioning: Various versions of framework should be maintained in a local repository which would further help in easy monitoring of the changes made to the software code.
+
+Extensibility and Maintenance: An ideal test automation framework should withstand all new enhancements to the software application and allow modification of the existing features.

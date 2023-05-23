@@ -1,0 +1,1481 @@
+--------------------
+System.setProperty ("webdriver.chrome.driver",".\\chromedriver.exe" );
+	driver = new ChromeDriver(); 
+
+WebDriverManager.chromedriver().setup();
+WebDriver driver = new ChromeDriver();
+
+-----------------------------------
+
+//select[@id='fname']/following-sibling::*
+//select[@id='fname']/following-sibling::select/
+
+//select[@id='lname']/preceding-sibling::select/
+//select[@id='lname']/preceding-sibling::*
+----------------------------------
+
+Both of them can be used to locate elements on a webpage.
+The findElement-- points to a single webelement, 
+This command is used to access any single element on the web page
+It will return the object of the first matching element of the specified locator
+It will throw NoSuchElementException when it fails to identify the element
+
+
+findElements--  method returns a list of matching webelements.
+List<WebElement> listOfElements = driver.findElements(By.xpath("//div"));
+This command is used to uniquely identify the list of web elements within the web page.
+The usage of this method is very limited
+If the element doesn’t exist on the page then, then it will return value with an empty list
+
+
+The return type of findElements is a list but the return type of findElement is a WebElement.
+
+-----------------------------
+Soft asserts/"Verify" :  Soft Assert collects errors during @Test. Soft Assert does not throw an exception when an assert fails and would continue with the next step after the assert statement. 
+
+SoftAssert softassert = new SoftAssert();
+softassert.assertEquals(originalTitle, expectedTitle);
+softassert.assertAll();
+object.assertAll() statement is required to see the exceptions; otherwise, the tester won't know what passed and what failed.
+
+HARD ASSERT:
+Hard Assert throws an AssertException immediately when an assert statement fails and test suite continues with next @Test
+The disadvantage of Hard Assert – It marks method as fail if assert condition gets failed and the remaining statements inside the method will be aborted.
+Assert.assertTrue(false);
+Assert.assertNotEquals(actualValue, expectedValue, msg);
+Assert.assertTrue(condition);
+Assert.assertFalse(condition);
+Assert.assertNull();
+
+----------------------------
+POM(Page Object Model)- design Pattern
+A java class is created that corresponds to each web page, consisting of the WebElements on the page and the corresponding methods that act on elements
+is a design pattern in Selenium that creates an object repository for all web elements. 
+
+
+ADVANTAGE: 
+Easy Maintenance
+Code Reusability
+Readability
+
+We can implement in tow ways
+>>>>>>>>1) Page Factory Class(@FindBy)<<<<<<<<<<<<<<
+Page Factory is a class provided by Selenium WebDriver to support Page Object Design patterns.
+The initElements method is used to initialize web elements that we locate using the @FindBy 
+@FindBy: An annotation used in Page Factory to locate and declare web elements using different locators.
+@FindBy(xpath/id='')
+WebElement ele;
+
+1) <ClassName> <objRefernce> = initElement.PageFactory(<CLassname>.class)
+
+2) public construvtorName/sameasclassNAME(WebDriver driver){
+	PageFactory.initElements(driver,this);
+}
+
+And than in main test case class
+
+ClassName obj = new ClassNAme(driver);
+
+3) Lazy Load
+ Page Factory is the lazy load concept using the AjaxElementLocatorFactory. It can be used when your application uses Ajax elements. Additionally, you can use it while trying to find an element to perform an operation and pass a timeout value, until which the driver would wait before throwing an exception. In other words, it is a variant of implicit wait using the class AjaxElementLocatorFactory. Subsequently, the syntax is as follows-
+PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
+
+>>>>>>>>2) POM class By<<<<<<<<<<<<<<<
+By Header=By.xpath("//h1");
+By getStarted=By.xpath("//*[@id='signupModalButton']");
+
+public Constructor(WebDriver driver) {
+this.driver=driver;
+}
+
+driver.findElement(Header).getText();
+
+
+
+
+-----------------------------
+
+EXCEPTIONS:
+1) NoSuchElementException : FindBy method can’t find the element.
+
+2) StaleElementReferenceException : This tells that element is no longer appearing on the DOM page.
+
+3) TimeoutException: This tells that the execution is failed because the command did not complete in enough time.
+
+4) ElementNotVisibleException: Thrown to indicate that although an element is present on the DOM, it is not visible, and so is not able to be interacted with
+
+5) ElementNotSelectableException: Thrown to indicate that may be the element is disabled, and so is not able to select.
+
+We can interact with hidden elements in Selenium Webdriver. The hidden elements are the ones that are present in the DOM but not visible on the page. Mostly the hidden elements are defined by the CSS property style="display:none;". In case an element is a part of the form tag, it can be hidden by setting the attribute type to the value hidden.
+
+--------------------------------
+
+Maven is a popular open-source build tool developed by the Apache Group to build, publish, and deploy several projects at once for better project management. 
+------------------------------------
+
+Absolute Xpath: It uses Complete path from the Root Element to the desire element.
+
+Relative Xpath: You can simply start by referencing the element you want and go from there.
+
+Relative Xpaths are always preferred as they are not the complete paths from the root element. (//html//body). Because in future, if any webelement is added/removed, then the absolute Xpath changes. So Always use Relative Xpaths in your Automation.
+------------------------------------
+
+XPATH and CSS Diff
+
+Xpath allows bidirectional flow which means the traversal can be both ways from parent to child and child to parent as well. 
+Css allows only one directional flow which means the traversal is from parent to child only.
+
+Xpath is slower in terms of performance and speed. Css has better performance and speed than xpath.
+
+Xpath allows identification with the help of visible text appearing on screen with the help of text() function. Css does not have this feature.
+
+There are two types of xpath – absolute and relative. But css has no such types.
+--------------------------------------
+
+The Implicit Wait in Selenium is used to tell the web driver to wait for a certain amount of time before it throws a “No Such Element Exception”.
+The default setting is 0. 
+Once we set the time, the web driver will wait for the element for that time before throwing an exception.
+
+driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);--METHOD OVERLOADING
+Implicitly Wait is applicable only to findElement and findElements no other statement in selenium.
+ Once set, the implicit wait is set for the life span of the WebDriver object instance.
+ You can re-assign the implicit wait time anywhere you want.
+We define in @BeforeMethod or @BeforeClass
+One thing to mention
+-Maximum time
+
+The Explicit Wait in Selenium is used to tell the Web Driver to wait for certain conditions (Expected Conditions) or maximum time exceeded before throwing “ElementNotVisibleException” exception. It is an intelligent kind of wait, but it can be applied only for specified elements. It gives better options than implicit wait as it waits for dynamically loaded Ajax elements.
+Two things to mention:
+-Maximum time
+-Expected condition
+
+WebDriverWait wait = new WebDriverWait(driver,30);
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'COMPOSE')]")));
+
+alertIsPresent()
+elementSelectionStateToBe()
+[]--elementToBeClickable()
+[]--elementToBeSelected()
+frameToBeAvaliableAndSwitchToIt()
+invisibilityOfTheElementLocated()
+invisibilityOfElementWithText()
+presenceOfAllElementsLocatedBy()
+presenceOfElementLocated()
+textToBePresentInElement()
+textToBePresentInElementLocated()
+textToBePresentInElementValue()
+titleIs()
+titleContains()
+visibilityOf()
+visibilityOfAllElements()
+[]--visibilityOfAllElementsLocatedBy()
+visibilityOfElementLocated()
+
+
+The Fluent Wait in Selenium is used to define maximum time for the web driver to wait for a condition, as well as the frequency with which we want to check the condition before throwing an “ElementNotVisibleException” exception. It checks for the web element at regular intervals until the object is found or timeout happens.
+Three things to mention:
+-Maximum Time
+-Frequency(PollingEver)
+-Condition
+
+Frequency: Setting up a repeat cycle with the time frame to verify/check the condition at the regular interval of time
+
+
+	Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)							
+			.withTimeout(30, TimeUnit.SECONDS) 			
+			.pollingEvery(5, TimeUnit.SECONDS) 			
+			.ignoring(NoSuchElementException.class);
+
+----------------------------------------
+Locators:
+
+driver.findElement(By.id("firstName"));
+ driver.findElement(By.name("gender"));
+ driver.findElement(By.className("practice-form-wrapper"));
+ driver.findElement(By.linkText("Home"));
+ driver.findElement(By.partialLinkText("Ho"));
+driver.findElement(By.cssSelector("input[id= ‘userName’]"));
+Xpath=//label[starts-with(@id,'message')]
+By.tagName("iframe");
+
+
+--------------------------------------
+TestNG 
+
+@BeforeMethod: This will be executed before every @test annotated method.
+@AfterMethod: This will be executed after every @test annotated method.
+@BeforeClass: This will be executed before first @Test method execution. It will be executed one only time throughout the test case.
+@AfterClass: This will be executed after all test methods in the current class have been run
+@BeforeTest: This will be executed before the first @Test annotated method. It can be executed multiple times before the test case.
+@AfterTest: A method with this annotation will be executed when all @Test annotated methods complete the execution of those classes inside the <test> tag in the TestNG.xml file.
+@BeforeSuite: It will run only once, before all tests in the suite are executed.
+@AfterSuite: A method with this annotation will run once after the execution of all tests in the suite is complete.
+@BeforeGroups: This method will run before the first test run of that specific group.
+@AfterGroups: This method will run after all test methods of that group complete their execution.
+---------------------------------------
+
+JS 
+JavascriptExecutor is an interface that is used to execute JavaScript with Selenium.
+enables the WebDriver to interact with HTML elements within the browser.
+
+JavascriptExecutor js = (JavascriptExecutor) driver;
+js.executeScript(script, args);
+
+-it can change the attribute value in DOM 
+-it can handle the weblemenets which are disabled, hidden
+-it can handle the scroll bar
+-it can hightlight the element
+- it can perform the actions which are not handles by WebDriver interface
+
+to focus the elementView
+excuteScript(argument[0].scroolIntoView(), element)
+
+to highlisght the elemtn
+argument[0].setAttribuute('style', border:red.., element)
+
+to check if page is loaded completely or not
+js.executeScript("return document.readyState").toString().equals("complete"))
+
+SCROLL WEB PAGE UNTIL IT IS VISIBLE
+WebElement ele = driver.findElement(By.xpath(“xpath”)));
+((JavascriptExecutor)driver).executeScript(“arguments[0].scrollIntoView(true);”,ele);
+
+MAKE HIDDEN ELEMENTS VISIBLE AT RUNTIME
+WebElement ele = driver.findElement(By.xpath(“xpath”)));
+((JavascriptExecutor)driver).executeScript(“arguments[0].setAttribute(‘style’,’visibility:visible;’);”,ele);
+
+>>>>>>>>>>>>Yes it is possible to manually set the attribute value of a web element in Selenium webdriver using the JavaScript Executor.
+JavascriptExecutor j = (JavascriptExecutor) driver;
+j.executeScript ("document.getElementsByClassName('mui-btn')[0].setAttribute('style', " + "'background-color: yellow')");
+
+
+how to highlight the element
+
+WebElement ele = driver.findElement(By.xpath("//*[@id='Email']"));
+        //Create object of a JavascriptExecutor interface
+JavascriptExecutor js = (JavascriptExecutor) driver;
+        //use executeScript() method and pass the arguments
+        //Here i pass values based on css style. Yellow background color with solid red color border.
+js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');",
+
+>>JavascriptExecutor js = (JavascriptExecutor) driver;
+
+js.executeScript(“location.reload()”);	//to refresh the browser window
+
+>>JavascriptExecutor js = (JavascriptExecutor) driver;
+
+js.executeScript(“document.getElementByID(‘element id ’).value = ‘xyz’;”);	//send text
+
+>>JavascriptExecutor js = (JavascriptExecutor)driver;
+
+Js.executeScript(“alert(‘hello world’);”);	//make alert
+
+>>JavascriptExecutor js = (JavascriptExecutor)driver;
+
+string sText =  js.executeScript(“return document.documentElement.innerText;”).toString();	// Get InnerText of a Webpage
+
+>>JavascriptExecutor js = (JavascriptExecutor)driver;
+
+ //Vertical scroll – down by 150  pixels
+
+ js.executeScript(“window.scrollBy(0,150)”);	//Scroll Page
+
+>>JavascriptExecutor js = (JavascriptExecutor) driver;
+js.executeScript("window.scrollBy(0,document.body.scrollHeight)", "");	//to scroll fully down
+==================================================
+FOCUS ON ELEMENT:
+
+>>JavascriptExecutor js = (JavascriptExecutor) driver;
+         js.executeScript("document.getElementById('username').focus();");	//to focus on element
+
+>>new Actions(driver).moveToElement(uname).click().perform(); 
+
+>>WebElement Element = driver.findElement(By.linkText("Linux"));
+
+        //This will scroll the page till the element is found		
+        js.executeScript("arguments[0].scrollIntoView();", Element);
+--------------------------------------
+
+How to enter text 
+>>JavascriptExecutor myExecutor = ((JavascriptExecutor) driver); 
+        myExecutor.executeScript("arguments[0].value='Test';", weElement); 
+
+>>driver.findElement(By.id("name")).Sendkeys("Quora"); 
+
+>>Actions performAct = new Actions(driver); 
+performAct.sendKeys(username, "admin").build().perform();
+
+----------------------------------
+
+How to click 
+
+>>WebElement button  = driver.findElement(By.xpath("//span[text()='Excel']/parent::button[@aria-controls='report'][contains(@class,'downloadExcel')]"));
+new Actions(driver).moveToElement(button).click().build().perform();
+
+>>WebElement button = driver.findElement(By.xpath("//span[text()='Excel']"));
+((JavascriptExecutor)driver).executeScript("arguments[0].click();", button);
+
+>>driver.findElement(By.xpath("//span[text()='Excel']")).click();
+=======================================
+
+
+Select: used to handle the dopdown. used on Select tag in DOM
+
+Select sel = new Select(WebElement);
+sel.selectByVisibleText("INDIA");
+sel.selectByIndex(0);
+sel.selectByValue("India");
+
+sel.isMultiple() – It return true if drop down allow multiple selections at a time.
+
+sel.deselectAll() – It deselect all selected options.
+
+sel.deselectByVisibleText(),
+sel.deselectByValue() 
+sel.deselectByIndex()  methods to deselect the dropdown options.
+
+[]--get all the dropdown values 
+ Select s = new Select(driver.findElement(By.xpath("//select[@name=’selType’]")));
+           List <WebElement> op = s.getOptions();  // getting the list of WebElements in the dropdown
+        	op.get(i).getText();
+
+[]--this is how to handle the dynamic dropdown
+ if(allOptions.get(i).getText().contains("ANGOLA")) {
+                 
+                allOptions.get(i).click();
+                break;
+                 
+            }
+
+-----------------------------
+
+Actions: used for handling keyboard and mouse events. includes various operations such as multiple events clicking by control key, drag and drop events and many more
+
+Actions action = new Actions(driver);
+
+   action.moveToElement(txtUsername)	//HOVER OVER
+	.click()
+	.keyDown(txtUsername, Keys.SHIFT)
+	.sendKeys(txtUsername, "hello")
+	.keyUp(txtUsername, Keys.SHIFT)
+	.doubleClick(txtUsername)
+	.contextClick(txtUsername)
+	.build()
+	.perform();
+
+The build() method is always the final method used so that all the listed actions will be compiled into a single step
+Use the perform() method when executing the Action object we designed 
+
+
+clickAndHold()- Clicks (without releasing) at the current mouse location.
+contextClick()	Performs a context-click at the current mouse location. (Right Click Mouse Action)
+doubleClick()	Performs a double-click at the current mouse location.
+dragAndDrop(source, target)
+dragAndDropBy(source, x-offset, y-offset) xOffset- horizontal move offset. yOffset- vertical move offset.
+keyDown(modifier_key) modifier_key – any of the modifier keys (Keys.ALT, Keys.SHIFT, or Keys.CONTROL)
+keyUp(modifier _key)modifier_key – any of the modifier keys (Keys.ALT, Keys.SHIFT, or Keys.CONTROL)
+moveByOffset(x-offset, y-offset) x-offset- horizontal offset. A negative value means moving the mouse left. y-offset- vertical offset. A negative value means moving the mouse down.
+moveToElement(toElement) toElement- element to move to. SOMETIMES MOUSE HOVER
+release()
+sendKeys(onElement, charsequence)
+
+----------------------------
+ALERTS
+
+Alert alert = driver.switchTo().alert();
+alert.accept()
+alert.dismiss()
+aler.getText()
+alert.sendKeys("textt");
+
+
+-----------------------------
+FRAMES
+iFrame in Selenium Webdriver is a web page or an inline frame which is embedded in another web page or an HTML document embedded inside another HTML document.
+The iframe is defined with the <iframe> tag.
+
+Int size = driver.findElements(By.tagName("iframe")).size();  //total no of frames in webpage
+
+driver.switchTo().parentFrame();
+driver.switchTo().defaultContent();
+
+sixe of iframe in page:
+Int sizeofframe = driver.findElements(By.tagName("iframen"));
+<iframe frameborder= 0 id="idframe00" name="nameFraeme" />
+
+1) Switch with WebElement
+WebElement iframe = driver.findElement(By.cssSelector("#modal>iframe"));
+driver.switchTo().frame(iframe);
+
+2) Switch with Id
+driver.switchTo().frame("idframe00");
+
+3) Swithc with Name
+driver.switchTo().frame("nameFraeme");
+
+4) Switch with Index
+driver.siwtchTo().frame(0);
+
+
+
+
+-----------------------------
+WINDOW HANDLING
+
+It is a unique identifier that holds the address of all the windows. Think of it as a pointer to a window, which returns the string value. 
+
+driver.getWindowhandle(): This method helps to get the window handle of the current window
+driver.getWindowhandles(): This method helps to get the handles of all the windows opened
+set: This method helps to set the window handles in the form of a string. set<string> set= driver.getwindowhandles()
+switchTo(): This method helps to switch between the windows
+
+Get the handles of all the windows that are currently open using the command: Set<String> allWindowHandles = driver.getWindowHandles(); which returns the set of handles.
+
+driver.switchTo().window(child_window);
+getWindowHandles method in selenium returns GU ID of all the browsers present at the moment, which are opened by the current driver. This method returns GU IDs as Set of String.
+
+the return type itself is set so set is used
+
+------------------------------
+
+1. isDisplayed() --returns true or false if element is display or not
+boolean eleSelected= driver.findElement(By.xpath("xpath")).isDisplayed();
+
+
+2. isSelected()  --This method is often used on radio buttons, checkboxes or options in a menu. It is used to determine is an element is selected. If the specified element is selected, the value returned is true. If not, the value returned is false.
+
+boolean elePresent = driver.findElement(By.xpath("xpath")).isSelected();
+
+3. isEnabled()  --This method verifies if an element is enabled within the web page.. If the element is enabled, it returns a true value. If not, it returns a false value.
+In general, user is not allowed to enter the text in search box when the search box is disabled. If it is enabled status, it should return true in the case.
+
+boolean eleEnabled= driver.findElement(By.xpath("xpath")).isEnabled();
+
+if element is diabled than we will handle it with javascript
+WebElement yourButton= driver.findElement(By.name("shippingAddress_save"));
+
+JavascriptExecutor js = (JavascriptExecutor) driver;
+js.executeScript("arguments[0].removeAttribute('disabled','disabled')",yourButton);
+
+WebDriverWait wait = new WebDriverWait(driver, 20);
+wait.until(ExpectedConditions.elementToBeClickable(yourButton));
+
+yourButton.click();
+
+document.getElementsByName('fname')[0].setAttribute('disabled', ''); ---to disabled the element
+document.getElementsByName('lname')[0].removeAttribute('disabled');  --to enable the element
+-----------------------------
+
+
+
+https://www.software-testing-tutorials-automation.com/2014/12/reading-font-properties-in-selenium.html#more
+Reading Font Properties In Selenium WebDriver Using .getCssValue() Method
+WebElement text;
+
+//Read font-size property and print It In console.
+  String fontSize = text.getCssValue("font-size");
+  System.out.println("Font Size -> "+fontSize);
+  
+  //Read color property and print It In console.
+  String fontColor = text.getCssValue("color");
+  System.out.println("Font Color -> "+fontColor);
+  
+  //Read font-family property and print It In console.
+  String fontFamily = text.getCssValue("font-family");
+  System.out.println("Font Family -> "+fontFamily);
+  
+  //Read text-align property and print It In console.
+  String fonttxtAlign = text.getCssValue("text-align");
+  System.out.println("Font Text Alignment -> "+fonttxtAlign);
+----------------------------
+// retrieving html attribute value using getAttribute() method
+String typeValue=searchTextBox.getAttribute("type");
+-------------------------------------
+
+
+Activities:
+migrating from log4j to logback
+migrating and automating two projects from java lang to new react js application.
+-------------------------
+
+in manual work:
+when development team surrender the new build at the end of day after bug fixes....so that time, we have less time to test and post the outcomes...so we do overtime to perform and complete the testing......
+and when frequently requirements changes from the client side, than we do update our test cases and perform the testing.....
+
+---------------------------------
+ChromeOption: It helps you perform various operations like opening Chrome in maximized mode, disable existing extensions, disable pop-ups, etc.
+The Chromeoptions Class is a concept in Selenium WebDriver for manipulating various properties of the Chrome driver.
+
+
+ChromeOptions options = new ChromeOptions()
+options.addArgument("start-maximized");
+ChromeDriver driver = new ChromeDriver(options);
+
+start-maximized: Opens Chrome in maximize mode
+incognito: Opens Chrome in incognito mode
+headless: Opens Chrome in headless mode
+disable-extensions: Disables existing extensions on Chrome browser
+disable-popup-blocking: Disables pop-ups displayed on Chrome browser
+make-default-browser: Makes Chrome default browser
+version: Prints chrome browser version
+disable-infobars: Prevents Chrome from displaying the notification ‘Chrome is being controlled by automated software
+------------------------------
+
+Desired Capabilities : Class is used to modify multiple properties of web drivers. It provides key-value pairs to change individual properties of web drivers such as browser name, browser platform, etc. A common method of Desired Capabilities class is the setCapability method. It is mostly used with Selenium Grid, where the same test case needs to be executed on different browsers.
+
+// Create an object of desired capabilities class with Chrome driver
+DesiredCapabilities SSLCertificate = DesiredCapabilities.chrome();
+// Set the pre defined capability – ACCEPT_SSL_CERTS value to true
+SSLCertificate.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+// Open a new instance of chrome driver with the desired capability
+WebDriver driver = new ChromeDriver(SSLCertificate);
+
+
+common capailites:
+ACCEPT_SSL_CERTS	This property tells the browser to accept SSL Certificates by default
+PLATFORM_NAME	This property is used to set the operating system platform used to access the web site
+BROWSER_NAME	This property is used to set the browser name for a web driver instance
+VERSION	This property to used to set the browser version
+-------------------------------------------------
+A Tooltip in Selenium is a text that appears when a mouse hovers over an object on a web page. The object can be a link, an image, a button, a text area, etc. The tooltip text often gives more information about the object on which the user hovers over the mouse cursor.
+
+WebElement m = driver.findElement(By.linkText("Coding Ground"));
+String s = m.getAttribute("title");
+
+------------------------------------
+NAVIGATIONS
+
+driver.navigate().to("http://only-testing-blog.blogspot.com/2014/01/textbox.html");	//it do not load the full page.
+driver.navigate().back();
+driver.navigate().forward();
+driver.navigate().refresh();
+-------------------------------------------
+
+//Capture entire page screenshot and then store it to destination drive
+  File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+  FileUtils.copyFile(screenshot, new File("D:\\screenshot.jpg"));
+  System.out.print("Screenshot is captured and stored in your D: Drive");
+
+-------------------------------------------------
+Scroll page with two methods
+
+js.execuetScript("window.scrollBy(0,130)");
+
+Actions act = new Actions(dr);
+            act.sendKeys(Keys.PAGE_DOWN).build().perform(); //Page Down
+            System.out.println("Scroll down perfomed");
+            Thread.sleep(3000);
+         
+            act.sendKeys(Keys.PAGE_UP).build().perform();       //Page Up
+            System.out.println("Scroll up perfomed");
+            Thread.sleep(3000);
+
+---------------------------------------------
+Enter the tab(keyboard function)- .sendKeys(Keys.TAB);
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+My full name is kamaljit singh. i belongs to Jalandhar city which is located in Punjab. I have done my B-tech in Comp Sci from Amritsar college of engg & Tech and from that college I got placment in product based company which is OATI mohali. And started my career in June 2016....Now I have total 6 YOE and currently working with DXC Tech, Bangalore location. 
+Currently I'm working in both Manual and Automation testing.
+And we are following the Agile Methododlogy.
+We have sprint system here where each spritn is of 2 weeks.
+We have also daily scrum call cto trcak the status of development
+Roles And Respo
+I develop test cases, Execute Test cases and Manintain them in both automation and manual testing...
+I perform Functional Testing only which consists
+Regression Testing
+Smoke Testing
+Sanity Testing
+Re-testing
+and some general testing...in different env dev, pp, qa 
+
+I got the requiremenst via User STories and
+our first step is to analsys the req and clear the dobts
+and than create the test cases
+and when build is reday to test
+than we perform our testing
+and report back the bugs to developer
+
+
+than automation testing......
+
+
+PRO
+
+-We have mixture of testng, POM(page object modle), data driven framework with Selenium webdriver in Java programming language
+-we are using TDD(Test Driven Development) approach(which is devloped in iterative approach and continusouly adding test cases) 
+-we create test data and store in separate properties files
+-we have the job for every batch of test cases.
+
+Hierarcy
+--------
+https://www.softwaretestinghelp.com/selenium-framework-design-selenium-tutorial-21/
+src
+	-TestCases packages-> contains all the test cases end to end flow with testng framework
+	-project related common functions-> contain common functions which is used frequently in project
+	-ClientTestNGRunnerClass-> contain only single main class from which we run the whole project by passing two aruguents(1- testing 	environment & 2- 				   path of testng.xml 
+	-POM-> contains Xpath of every webelement of each page of application with operated methods on it by PageFactoryMethod
+	-Utility-> contains resuableUtility methods like- BASEDRIVER CLASS, TCONSTANTS CLASS, javascript executor methods, waits, alert, 	actions, taking 		snapshot etc
+	-logback.xml-> contains configuration of logback framework to log everything.
+	
+config
+	-configurationPropertiesFiles-> in which browser execution will take happen and some other app realted configurations
+
+testData
+	-TestDataPropertiesFiles-> contains test data like which flow is required to run and what type of data it requires
+
+POM.xml
+	-contains mavnen dependcies of every library that we are using in framework
+testng.xml files
+	-contains all the classes that will run under each flow
+
+
+-if we have any failure than we try that thing again via implementing the iReTryAnalyser interface and yu can customise the count.
+-If we there is any failure than we catch this with implementing iTestListener interface(onTestFailure method name iTestResult result) result.getThrowable().../getName()
+-if there is any failure happened than we catch that exception in catch block and wirte the code to capture ss and set the status of different variable of failure, like status etc...
+
+-we used List<String> str = new ArrayList<string> in capturimg the email id
+
+-we use org.apache.common.email.HTMLEamil class package for email
+-we use String Buffer to write code with append()
+-we require host and port (mail.smtp.host/port)
+-and attachment is done with EmailAttachment class
+
+-ExtentReports class is used to create extent report
+-we use interface for TConstants clas
+
+-We have only one main class and rest all are normal classes
+we insert env plus testng.xml path and that two arguments move to 
+TestNG runner = new TestNG()
+runner.setOutputDirectlyr(where yu want to ouytput the details/report details)
+runner.setTestSuites(testng.xml file path)
+runner.run();
+
+
+------------
+-The major benefit of the @FindBy annotation is that it lets you initialize page elements without using the FindElement (or FindElements) in Selenium.
+
+-POM(page objects)--create xpath of every webelemtn of each page im separate java class plus operated methods on it with the help of PageFactory concept. And whereever you want to initialse it than call it as <ClassName> <objRefernce> = initElement.PageFactory(<CLassname>.class)
+
+-Common packages-used for common fucntions, send email, application properties, driver class, constants
+-test cases pcakage cover  full end to end flow 
+-if there is any failure, than we generate email for it
+-
+-we have dev, qa,prod environment
+-we are using extent report
+-we send report to the leads after execution 
+
+-for exception handling , we have separate methd in which
+exception.getMessage()--to print the exception
+exception.getStackTrace().toString();
+-and add teh condition that if errormessage contains
+-"Unable to locate element", than behave this way or show this error in comments in report/email
+-java.lang.null.pointerexception...
+- also take screenshot
+------------------------------
+
+JavascriptExecutor jse = ((JavascriptExecutor)driver);
+WebElement email = driver. findElement(By.id("useremail"));
+jse. executeScript("arguments[0]. value='---your email id---';", email);
+----------------
+
+Challenges:
+-we are migrating the few projects from pure java lang to new react js lang. so we are automating whole application in react js flow. so in this, we are facing trouble that sometimes, acton isperformed from slenium side and showing correct logs in console. But not on UI side....that time we use different methods to handle
+- while filling the form , the entered value is rmoved/disappear after few seconds due to call of api by dynamic ajax elements. so that time, we use try catch block or sometimes re enter the value or sometimes just refresh the page.....
+-----------------------------------
+Listeners are TestNG annotations that literally “listen” to the events in a script and modify TestNG behaviour accordingly. These listeners are applied as interfaces in the code. For example, the most common usage of listeners occurs when taking a screenshot of a particular test that has failed along with the reason for its failure. 
+There are two main listeners.
+WebDriver Listeners
+TestNG Listeners
+
+
+ITestListener has following methods
+OnStart- OnStart method is called when any Test starts.
+onTestSuccess- onTestSuccess method is called on the success of any Test.
+onTestFailure- onTestFailure method is called on the failure of any Test.
+onTestSkipped- onTestSkipped method is called on skipped of any Test.
+onTestFailedButWithinSuccessPercentage- method is called each time Test fails but is within success percentage.
+onFinish- onFinish method is called after all Tests are executed.
+
+@Override		
+    public void onTestFailure(ITestResult arg0) {					
+        // TODO Auto-generated method stub				
+        		
+    }	
+
+---------------------------
+-List<String> to print all the values in dropdown and print all the options of dopdown
+-to capture all the emails of to from cc
+window handles
+-when we add all the emp details in one list and get that details in another class
+-also used in exception handling method
+
+-url is launced in @BeforeMthod
+-deriver is initalsised (chorm is open) in @BeforeClass
+-WebDriver is static insitalised only one and used in another class by passing this as paramter or inheritamce of class in which webdriver is initalised
+
+-------------------------------
+
+TestNG
+
+Parameterisation : Parameterized tests allow developers to run the same test over and over again using different values.
+two methods:
+With testng.xml
+With Data Providers
+
+
+@Parameters("myName")
+public void av(String myNAme)
+{}
+
+<test name = "test1">
+
+      <parameter name = "myName" value="manisha"/>
+
+      <classes>
+         <class name = "ParameterizedTest1" />
+      </classes>
+
+   </test>
+
+
+
+  @DataProvider(name = "test1")
+   public static Object[][] primeNumbers() {
+      return new Object[][] {{2, true}, {6, false}, {19, true}, {22, false}, {23, true}};
+   }
+
+ @Test(dataProvider = "test1")
+----------
+>>we can run parallel in testng below things:
+-parallel suites(testng.xml files)
+-parallel tests
+-classes
+-methods
+
+The parallel attribute of suite tag can accept four values:
+
+tests	All the test cases inside <test> tag of Testing xml file will run parallel.
+classes	All the test cases inside a Java class will run parallel
+methods	All the methods with @Test annotation will execute parallel.
+instances	Test cases in same instance will execute parallel but two methods of two different instances will run in different thread.
+
+---------------------
+to read from property file
+Properties obj = new Properties();
+FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\application.properties");
+obj.load(objfile);
+String mobileTesting = obj.getProperty("MobileTesting");
+
+------------------
+
+//windowHandle
+//count the rows
+//siblings in xpath
+
+--------------------
+
+New features of Selenium 4
+#1) Capture screenshot of specific web element:
+#2)  Open the new tab on the browser:
+#3) Open a new window on the browser:
+#4) Object Location:Now with Selenium 4, users can achieve the coordinates, dimension, height, width, etc. as the location of the web elements or object.
+#5) Relative Locators:
+below(): Web element located below for the specified element.
+toLeftOf() : Target web element which is present to the left of specified element.
+toRightOf(): Target web element which is presented to the right of a specified element.
+above(): Web element located above for the specified element.
+near() : Target web element which is away(approx. 50 pixels) from the specified element.
+---------------------------------------------
+>>****we always write failure screesnhot code in either in catch block or in 
+-ITestListern interface's ontestFailure method
+-@AfterStep in BDD
+-catch block 
+-@AFterMethod
+------------------------------------------------
+Types of Listerners in TESTNG
+IAnnotationTransformer 
+IAnnotationTransformer2
+IHookable
+ItestListerner interface
+-------------------------------------------------
+
+FAILURE OF TC 
+
+***********BDD************
+
+Q--WHAT TO DO AFTER FAILURE OF TC
+<<1>> write @AfterStep in BDD
+public void afterFail(Scenario sc)
+{ if(sc.isFailed())
+{ take scereenshot
+update the status
+
+
+<<2>> itestListerner in TestNG
+OnStart(execute first)- OnStart method is called when any Test starts.
+onTestStart(execuet before test starts)
+
+onTestSuccess- onTestSuccess method is called on the success of any Test.
+onTestFailure- onTestFailure method is called on the failure of any Test.
+onTestSkipped- onTestSkipped method is called on skipped of any Test.
+onTestFailedButWithinSuccessPercentage- method is called each time Test fails but is within success percentage.
+onFinish- onFinish method is called after all Tests are executed.
+
+
+Setp 1) Below is the ITestListerner interface which is implemented by abc class in Resource folder
+
+
+Class abc implements ITestListener{
+public void onTestFailure(ITestResult result) {
+//take scereenshot code
+result.getName(); //to get the @Test method name
+result.getMethod().getMethodName() 
+}
+
+}
+
+
+Step 2) If you want to use ItestListener methods(onTestFailure, onTestSuccess..) in any class, then use 
+
+At the class level: Annotating listeners on each class in the test code.
+@Listeners(TestListener.class)
+public class <className>{
+
+@Test
+
+@Test
+
+}
+
+
+>>if you wwant to implement the listerners class on set of test suite, then we should implement in testng.xml 
+At the suite level: Define the class names to implement listeners in the TestNG XML file.
+<suite name="ListenerExecution">
+<listeners>
+    <listener class-name = "ListenersTestNG"></listener>
+    </listeners>
+
+    <test name="ExecutingListeners">
+        <classes>
+            <class name="TestNG"></class>
+        </classes>
+    </test>
+    
+    
+</suite>
+
+
+Q-- HOW TO RUN THE FAILED TEST CASES
+
+>>By running the code twice with the help of loops, if still failed due to Network issue, server issue or any other issue then follow the below approach
+
+CASE 1:: A folder will be generated named “test-output” folder. Inside “test-output” folder, you could find “testng-failed.xml”. You just need to execute it
+
+CASE 2:: By using IRetryAnalyser interface with IAnnotationtransformer to run the failed test cases.
+we can achieve this by two ways:
+>>IN THIS CASE, IT WILL RE-RETRY UNTIL MAX COUNT AND IN THOSE TRIES WHENEVER IT GOT EXCEPTION IT GOT SKIPPED AND TRY AGAIN LIKE:
+
+START(try -1)
+GOT EXCEPTION
+SKIPPED
+START(try -2)
+ GOT EXCEPTION
+FAILED
+
+(a): By mentioning the "retryAnalyzer" with @Test
+
+@Test(retryAnalyzer = Retry.class)
+public void testCase() {
+}
+
+--
+
+public class Retry implements IRetryAnalyzer {
+    private int count = 0;
+    private static int maxTry = 3;
+    @Override
+    public boolean retry(ITestResult iTestResult) {
+        if (!iTestResult.isSuccess()) {                      //Check if test not succeed
+            if (count < maxTry) {                            //Check if maxtry count is reached
+                count++;                                     //Increase the maxTry count by 1
+                iTestResult.setStatus(ITestResult.FAILURE);  //Mark test as failed
+                return true;                                 //Tells TestNG to re-run the test
+            } else {
+                iTestResult.setStatus(ITestResult.FAILURE);  //If maxCount reached,test marked as failed
+            }
+        } else {
+            iTestResult.setStatus(ITestResult.SUCCESS);      //If test passes, TestNG marks it as passed
+        }
+        return false;
+    }
+}
+
+---
+
+public class AnnotationTransformer implements IAnnotationTransformer {
+    @Override
+    public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
+        annotation.setRetryAnalyzer(Retry.class);
+    }
+}
+
+-----
+
+(b) by mentioning the listener tag in testng.xml file, so that is for all the classes
+
+<suite name="TestNG retrysingletest.Listener Example">
+    <listeners>
+        <listener class-name="retrysingletest.Listener"/>
+        <listener class-name="retrysingletest.AnnotationTransformer"/>
+    </listeners>
+    <test name="TestNG Sample Test" preserve-order="true">
+        <classes>
+            <class name="retrysingletest.RetryOnlyFailedTests"/>
+        </classes>
+    </test>
+</suite>
+
+======================================================
+
+>>we setup our driver in BaseClass like
+public WebDriver driver;
+
+driver = new ChromeDriver();
+
+
+And inherit the baseclass in any other test case class- so here we are using the inheritancve property like we are using the driver from base class to tc class. 
+==============================
+XPATHS:
+
+//*[@attribute_name1='attribute_value1' and @attribute_name2='attribute_value2]
+
+//*[@attribute_name1='attribute_value1' or @attribute_name2='attribute_value2]
+
+//*[contains(@attribute_name,'attribute_value')]
+
+//*[text()='New look for sign-in coming soon']
+
+findElement(By.xpath("(//input[@type='text'])[2]"))
+
+findElement(By.xpath("(//input[@type='text'])[position()=2]"))
+
+
+==================================
+
+Select option without using select class
+
+WebElement select = driver.findElement(By.id(“gender”));
+List options = select.findElements(By.tagName(“Male”));
+for (WebElement option : options) {
+if(“Germany”.equals(option.getText()))
+option.click();
+
+============================
+
+
+
+
+==============================
+Features of selenium 4
+Source: https://automationreinvented.blogspot.com/2021/06/important-new-features-in-selenium-4.html
+
+>>This is set to change in Selenium 4 as it comes with a new API – newWindow that allows users to create and switch to a new window/tab without creating a new WebDriver object.
+
+driver.get("https://www.google.com/");
+// Opens a new window and switches to new window
+driver.switchTo().newWindow(WindowType.WINDOW);
+// Opens BrowserStack homepage in the newly opened window
+driver.navigate().to("https://www.browserstack.com/");
+
+/ Opens a new tab in existing window
+driver.switchTo().newWindow(WindowType.TAB);
+
+
+>>
+Deprecation of Desired Capabilities(replaced with Options object)
+Desired Capabilities were primarily used in the test scripts to define the test environment (browser name, version, operating system) for execution on the Selenium Grid.
+In Selenium 4, capabilities objects are replaced with Options. This means testers now need to create an Options object, set test requirements, and pass the object to the Driver constructor.
+Listed below are the Options objects to be used going forward for defining browser-specific capabilities:
+
+Firefox – FirefoxOptions
+Chrome – ChromeOptions
+Internet Explorer (IE) – InternetExplorerOptions
+Microsoft Edge – Edge
+
+>>changes in methods of Actions class
+click(WebElement)
+This method is added to Actions class to replace the moveToElement(onElement).click(). 
+It is used to click on a certain web element.
+
+clickAndHold(WebElement)
+This method will replace the moveToElement(onElement).clickAndHold(). 
+It is used to click on an element without releasing the click.
+
+contextClick(WebElement)
+This method will replace moveToElement(onElement).contextClick(). 
+It will perform the right click operation.
+=================
+
+automationreinvented.blogspot.com/2022/07/top-selenium-interview-questions-and.html
+
+QHow to check Text is Bold or not using selenium ?
+WebElement text = driver.findElement(By.xpath("//*[contains(text(),'Automation')]"));
+       /Read font-weight property and print It In console.
+	String fontSize = text.getCssValue("font-weight");
+
+QStaleemenetexception
+The stale element reference exception is a WebDriver error that is thrown in the following two cases:
+1. The referenced web element has been deleted completely. 
+2. The element is no longer attached to the DOM
+
+To resolve this, we can refresh the page using navigate() or with try-catch block or use explicit wait.
+
+Q. 
+implict wait- used to tell the webdriver to wait for the webelement for speicifed time
+explicit wait- used to tell the webdriver to wait for the condition to be satisfied in the speicifed time. used for single element. used for ajax element that is dynamically loaded
+
+Q How to retrieve css properties of an element in selenium?
+Ans: driver.findElement(By.id(“id“)).getCssValue(“name of the css attribute”);
+
+74.  What is the Selenium's Recording language?
+Ans: Selenium recording language is HTML
+
+75. How to refresh browser without using navigate()?
+Ans: Using .sendKeys(Keys.F5)
+
+77.  What is the best way to resolve NoSuchElementException in Selenium?
+Ans:
+ You can never be sure that element will be found, this is purpose of functional tests - to tell you if anything changed on your page. But one thing which definitely helps is to add waits for the elements which are often causing NoSuchElementException like
+
+WebDriverWait wait = new WebDriverWait(webDriver, timeoutInSeconds);
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.id<locator>));
+
+79. What is the default time for implicit and explicit wait?
+Implicit wait default time is zero.
+Explicit wait default time is 500 ms
+
+How to perform back,forward and refresh action in selenium?
+driver.navigate().back()
+driver.navigate().forward ()
+driver.navigate().refresh()
+
+
+What is the return type of findelements?
+List of elements with similar property
+
+What will happen if no webelement is found for findelements?
+It will return an empty list
+
+What will happen if no webelement is found for findelement?
+It will give error as :NoSuchElementException
+
+>>js.executeScript("arguments[0].click();", button);
+>>//Vertical scroll down by 600  pixels		
+        js.executeScript("window.scrollBy(0,600)");
+
+>>inputField.sendKeys(Key.chord(Key.CONTROL, 'a'));
+    inputField.sendKeys(Key.chord(Key.CONTROL, 'c'));
+    for(int i = 0; i < 10; i++) {
+        inputField.sendKeys(Key.chord(Key.CONTROL, 'v'));
+
+>>JavascriptExecutor jse = (JavascriptExecutor)driver;
+jse.executeScript("arguments[0].value='VALUE';", element);	//enter the value in inputbox
+
+>>JavascriptExecutor executor = (JavascriptExecutor)driver;
+executor.executeScript("arguments[0].click();", element);	//click the button
+
+
+>>	Actions actions = new Actions(driver)
+// Select the Current Address using CTRL + A
+        actions.keyDown(Keys.CONTROL);
+        actions.sendKeys("a");
+        actions.keyUp(Keys.CONTROL);
+        actions.build().perform();
+        
+        // Copy the Current Address using CTRL + C
+        actions.keyDown(Keys.CONTROL);
+        actions.sendKeys("c");
+        actions.keyUp(Keys.CONTROL);
+        actions.build().perform();
+        
+        //Press the TAB Key to Switch Focus to Permanent Address
+        actions.sendKeys(Keys.TAB);
+        actions.build().perform();
+        
+        //Paste the Address in the Permanent Address field using CTRL + V
+        actions.keyDown(Keys.CONTROL);
+        actions.sendKeys("v");
+        actions.keyUp(Keys.CONTROL);
+        actions.build().perform();
+
+
+>> select dorpdown without select 
+List<WebElement> allOptions = driver.findElements(By.xpath("//select[@name='JDK']//option"));
+        System.out.println(allOptions.size());                                           
+        for(int i = 0; i<=allOptions.size()-1; i++) {
+             if(allOptions.get(i).getText().contains("JDK 1.8")) {
+                    allOptions.get(i).click();
+                break;
+
+=======================================
+https://www.browserstack.com/guide/difference-between-selenium-remotewebdriver-and-webdriver
+REMOTEWEBDRIVER
+RemoteWebDriver class implements the WebDriver interface to execute test scripts through the RemoteWebDriver server on a remote machine. 
+
+
+
+=======================================
+
+============================================
+
+36.  How to launch batch file from Selenium WebDriver?
+ Process batch = Runtime.getRuntime.exec("path of the batch file");
+
+37. How to run selenium test from command line?
+java -classpath ".;selenium-server-standalone-2.33.0.jar" SampleClass
+
+38. What is the name of the super interface of the Webdriver?
+Ans: SearchContext.
+
+<p class="error-message ng-binding" ng-show="showMessage()" style="" xpath="1">Invalid username or password!</p>
+
+36. How to identify an object which is the second child of type link?(parent xpath is "//body//footer//p[1]")
+
+//body//footer//p[1]//child::a[2]
+
+37. How to get all the child for object with xpath as //body//footer//p[1]?
+
+//body//footer//p[1]//child::*
+
+38. How to get all the parent for object with xpath as //body//footer//p[1]?
+
+//body//footer//p[1]//parent::*
+
+
+
+40. How to execute the testng test suite from the command line?
+
+Ans: java -cp “C:\AutomationReinvented\testng \lib\*;C:\AutomationReinvented\testng\bin” org.testng.TestNG testng.xml
+
+How to fetch text from UI in selenium?
+gettext()
+getAttribute("propertyname")
+
+8. How to get current url,title and page source?
+driver.getCurrentUrl();
+driver.getTitle();
+driver.getPageSource();
+
+How to do Browser Initialization for all types of browser?
+
+•    Firefox
+WebDriver driver = new FirefoxDriver();
+•    Chrome
+WebDriver driver = new ChromeDriver();
+•    Internet Explorer
+WebDriver driver = new InternetExplorerDriver();
+•    Safari Driver
+WebDriver driver = new SafariDriver();
+
+
+22. How to handle proxy in selenium for chrome?
+
+ChromeOptions options = new ChromeOptions();// Create object Proxy class - Approach 1
+Proxy proxy = new Proxy();
+proxy.setHttpProxy("username:password.myhttpproxy:3337");
+options.setCapability("proxy", proxy);
+ChromeDriver driver = new ChromeDriver(options);
+
+. How to set the size of the window in selenium?
+
+driver.manage().window().setSize(new Dimension(1024, 768));
+
+How to drag and drop from source to destination?
+
+      WebElement source = driver.findElement(By.xpath("//div[@id='draggable']"));
+      WebElement destination = driver.findElement(By.xpath("//div[@id='droppable']"));
+      Actions builder = new Actions(driver);
+      builder.dragAndDrop(source,destination);
+     
+
+How to perform keyboard actions in selenium?
+
+By using Robot class as below:
+Robot robo = new Robot();
+robo.keyPress(KeyEvent.VK_ENTER);
+
+How to get all cookies and with name of the cookie?
+
+driver.manage().getCookies();
+driver.manage().getCookieNamed("APISID");
+
+
+29. How to delete all cookies and with name of the cookie?
+
+driver.manage().deleteCookieNamed("APISID");
+driver.manage().deleteAllCookies();
+
+42.How would you upload a file via Selenium Webdriver? Know About Kubernetes
+
+Let we have a button as "Choose File", so first need to identify this element as below
+
+@FindBy(xpath="//span[contains(text(),'Activate')]")
+    public WebElement chooseFile;
+
+Use sendkeys with the file path that you want to upload:
+
+chooseFile.sendKeys("C:\\filetoupload")
+
+
+ Tell me two things that you can't automate using Selenium?
+
+Captcha and Barcodes 
+
+
+>>
+expectedExceptions      
+The list of exceptions that a test method is expected to throw. If no exception or a different than one on this list is thrown, this test will be marked a failure.
+
+public class ExceptionTesting {
+
+
+    @Test(expected = ArithmeticException.class)
+    public void testWithException() {
+        int i = 1 / 0;
+    }
+
+
+
+
+timeOut   
+The maximum number of milliseconds this test should take.
+
+ @Test(threadPoolSize = 3, invocationCount = 6, timeOut = 1000)
+    public void testMethod()
+    {
+        Long id =sss}
+
+
+invocationCount 
+The number of times this method should get invoked.
+
+
+Description:    
+The description for this method. It is important to give a small information about the test case.
+
+
+alwaysRun 
+If set to true, this test method will always be run even if it depends on a method that failed.
+
+dependsOnMethods
+The list of methods this method depends on.
+
+
+
+
+===================
+API Testing
+
+https://automationreinvented.blogspot.com/search/label/Rest-API
+
+=========================
+
+https://syntaxtechs.com/blog/top-25-selenium-tricky-interview-questions
+
+============================
+Consider a situation: Selenium Script runs in Chrome, but not in IE. How can you resolve the issue
+
+Ensure that you are using the updated version of the Selenium IE Driver
+Ensuring compatibility between the working environment and the IE driver
+Assigning same value for the ‘Enabled Protected Mode’ option for all zones from the Security Tab
+Proceeding with the configuration of the IE driver with the setProperty method and by importing dependencies
+Making use of CSS Selectors to minimise exceptions
+Instituting a Registry Entry
+Internet security settings in IE should be turned off while executing the script
+Making use of latest Selenium jars
+Making use of JavaScriptExecutor instead of native click when clicking elements
+Allowing for JavaScript on the IE browser
+
+>> types of listeners in TestNG are:
+
+IConfigurable
+IExecutionListener
+IAnnotationTransformer
+IHookable
+IInvokedMethodListener
+IInvokedMethodListener2
+IConfigurationListener
+IReporter
+ITestListener
+IMethodInterceptor
+ISuiteListener
+
+>>7. For database testing in Selenium WebDriver, which API is required?
+For this, we will require the Java Database Connectivity (JDBC) API. It facilitates the execution of SQL statements. 
+
+>>Can window pop-ups be handled by Selenium?
+Since Selenium solely provides for testing of web applications and not mobile or Window-based applications; it does not support handling of window pop-ups. In order to handle such pop-ups, third party intervention is required. Examples of such external tools are Autolt and Robot Class. 
+
+>> Screenshot can be taken by making use of the TakeScreenshot function. Consequently, you can make use of the getScreenshotAs() method to save the screenshot. 
+
+File scrFile = ((TakeScreenshot)driver) .getScreenshotAs(outputType. FILE);
+
+
+>>
+The Robot class helps in providing control over the mouse and keyboard devices. It includes:
+
+KeyPress()
+Invoked when you want to press any key
+
+KeyRelease()
+Invoked to release the pressed key on the keyboard
+
+MouseMove()
+Invoked to move the mouse pointer in the X and Y coordinates
+
+MousePress()
+Invoked to press the left button of the mouse
+
+>>
+findElement
+-points to only single element
+-The command helps in finding one particular element within the current page using the locating mechanism.
+It returns the first element located by the locator
+throw exception "nocushelementpreset" if there is no element match
+
+findElements
+The command helps in finding all the elements within the current page using the locating mechanism. Consequently, it returns a list of matching web elements found by the locator.
+return 0 if no match
+
+==================
+
+HardAssertions
+assertNull()
+assertNotNull()
+assertEquals()
+assertNotEquals()
+assertTrue()
+assertFalse()
+
+
+>>In order to detect broken links, you can proceed along the following steps. 
+
+You will be required to accumulate all the links present on a web page by making use of the <a> anchor tag. For each of the <a> tag, make use of the attribute ‘href’ value in order to obtain the hyperlink
+Next, you have to send HTTP requests for each link and verify the HTTP response code
+On the basis of this HTTP response code, you will be able to determine if the link is valid or broken. After this, you can make use of the driver.get() method in order to navigate to a URL, which should respond with a status of 200-OK. 200-OK indicates that the link is working. However, if you do happen to get any other status, then it would indicate that the link is broken. 
+You can repeat the process for all the captured links
+
+HttpURLConnection huc = (HttpURLConnection)(new URL(url).openConnection());
+
+huc.setRequestMethod("HEAD");
+
+huc.connect();
+
+respCode = huc.getResponseCode();
+
+if(respCode >= 400){
+System.out.println(url+" is a broken link");
+}
+
+Silk Test is a tool specifically designed for doing REGRESSION AND FUNCTIONALITY testing.
+
+>>In case of Selenium, the driver instance can be configured by making use of desired capability. It is especially helpful when you would like to run the test cases in different operating systems, versions and browsers. Selenium Grid
+
+
+>>
+POM
+Finding web elements using By
+Page Object Model is a design pattern
+In POM, one needs to initialize every page object individually
+
+Page Factory
+Finding web elements using @FindBy
+PageFactory is a class that provides the implementation of the Page Object Model design pattern
+In PageFactory, all page objects are initialized by using the initElements() method
+===============
+https://www.syntaxtechs.com/blog/selenium-tester-roles-jobs-resume-salary
+============================
+
+ various TestNG listeners in Selenium WebDriver.
+
+ITestListener
+IAnnotationTransformer
+IInvokedMethodListener
+ISuiteListener
+IReporter
+IConfigurable
+IExecutionListener
+IHookable
+
+
+
+
+
+
+================
+
+SELECT email, COUNT(email) 
+FROM users
+GROUP BY email
+HAVING COUNT(email) > 1
+================
+
+handle duplicate values in doprdown
+
+public boolean isSelectOptionsRepeating(WebElement dropdown)
+{
+    Select s = new Select(dropdown);
+    List<WebElement> list = s.getOptions();
+    Set<String> listNames = new Hashset<String>(list.size());
+    for (WebElement w : list) {
+        listNames.add(w.getText().trim());
+    }
+
+    if(list.size()== listNames.size())
+        return true;
+    else
+        return false;
+}
+
+-----------------
+how to handle the dropdwon withotu select
+
+ //Click on Country Dropdown
+  
+        driver.findElement(By.name("country")).click();
+         
+        List<WebElement> allOptions = driver.findElements(By.xpath("//select[@name='country']//option"));
+        System.out.println(allOptions.size());
+         
+                 
+                 
+        for(int i = 0; i<=allOptions.size()-1; i++) {
+             
+             
+            if(allOptions.get(i).getText().contains("ANGOLA")) {
+                 
+                allOptions.get(i).click();
+                break;
+                 
+            }
+        }
+
+--------------------
+WebElement m = driver.findElement(By.linkText("Coding Ground"));
+String s = m.getAttribute("title");
+
+to get the value of title attribute in DOM
+
+----------------
+XPATHS

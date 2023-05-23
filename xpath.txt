@@ -1,0 +1,27 @@
+ xpath:
+when we found mutliple emelements like 3 elements:
+XPATH: //tagname[@key='value'][indexNumber]
+CSS: tagname[key='value']:nth-child(2/indexNumber)
+
+XPATH: //div/div[1]/following-siblings::button[1]	--it means div[1] tag have mutliples siblings
+
+
+//div/div[1]/parent::button[1] here button[1] is parent of div[1]
+
+
+NOTES:
+css caught hidden elements. so indexing is always different than xpath
+xpath sometimes do not found hidden elements
+
+51:lecture
+
+/* Select the last book from the search results. */
+//a[contains(.,'Selenium')])[last()]
+
+/* Select the first book from the search results. */
+//a[contains(.,'Selenium')])[1]
+
+------------
+
+URLS:
+https://www.techbeamers.com/writing-data-driven-tests-using-webdriver/

@@ -1,0 +1,97 @@
+HashMap is non-syncronized and is not thread safe		 HashTable is thread safe and is synchronized.
+
+HashMap allows one null key and values can be null		 HashTable doesn't allow null key or value.
+
+HashMap is faster than HashTable.
+
+HashMap iterator is fail-safe 	     				HashTable iterator is not fail-safe.
+
+>>The runtime polymorphism can be achieved by method overriding. Java 
+virtual machine determines the proper method to call at the runtime, not at the compile time.
+
+>>. Constructors cannot be abstract, final, static and synchronised 
+while methods can be. Constructors do not have return types while methods do.
+
+
+>>Selenium Assertions can be of three types: “assert”, “verify”, and ” waitFor”. When an “assert” fails, the 
+test is aborted. When a “verify” fails, the test will continue execution, logging the failure. A “waitFor” 
+command waits for some condition to become true.
+
+>>The super keyword refers to superclass (parent) objects. It is used to call superclass methods, and to 
+access the superclass constructor. The most common use of the super keyword is to eliminate the 
+confusion between superclasses and subclasses that have methods with the same name.
+
+>>Abstract class can inherit another class using extends keyword and implement 
+an interface. Interface can inherit only an inteface. Abstract class can be inherited using extends 
+keyword. Interface can only be implemented using implements keyword.
+
+>>WebDriver driver = new FirefoxDriver();
+JavascriptExecutor executor = (JavascriptExecutor)driver;
+executor.executeScript("document.getElementById("textbox_id").value='new value';);
+
+
+>>How do you handle keystrokes in Selenium?
+Using Actions Class: Actions action = new Actions(driver); action. keyDown(Keys. ...
+Using SendKeys Chord: driver. findElement(By. ...
+Using Robot Class: // Create Robot class Robot rb = new Robot(); // Press control keyboard key rb.
+
+
+>>Maps are used for when you want to associate a key with a value and Lists are an ordered collection. Map is an 
+interface in the Java Collection Framework and a HashMap is one implementation of the Map 
+interface. HashMap are efficient for locating a value based on a key and inserting and deleting values based on a 
+key. HashMap<String, Integer> map = new HashMap<>();
+
+>>//div[starts-with(@id,'post-body-')]/
+
+>>//div[contains(@id,'post-body-')]/
+
+>>Wrapper class in java are used for data conversion. In data conversion if user wants to convert Int to 
+string, String to int, Boolean, double then we use Wrapper class. 
+integer.parseInt(); - To convert string to Integer
+Double.parseDouble(); - To convert string to Double
+Boolean.parse Boolean(); - To convert string to Boolean
+String.valueof(); - To convert Integer to String.
+
+
+>>The Singleton's purpose is to control object creation, limiting the number of objects to only one. Since 
+there is only one Singleton instance, any instance fields of a Singleton will occur only once per class, just 
+like static fields. Singletons often control access to resources, such as database connections or sockets.
+For example, if you have a license for only one connection for your database or your JDBC driver has trouble 
+with multithreading, the Singleton makes sure that only one connection is made or that only one thread 
+can access the connection at a time.
+
+>>int ivar = 123;
+ String str = String.valueOf(ivar);	//converting int to string
+ System.out.println("String is: "+str);
+
+>>Iterator<String> it = studentList.iterator();
+while(it.hasNext()){
+System.out.println(it.next());
+}
+
+
+>>mplicitlyWait() to set a wait time before searching and locating a web element.
+• driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+• untill() from WebdriverWait and visibilityOfElementLocated() from ExpectedConditions to
+wait explicitly till an element is visible in the webpage.
+• WebDriverWait wait = new WebDriverWait(driver, 10);
+• WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated 
+(By.xpath("//input[@id=’name’]")));
+
+>>File shot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+• FileUtils.copyFile(shot, new File("D:\\ shot1.jpg"));
+
+>>moveToElement() from the Actions class to simulate mouse hover effect
+
+>>• Assert.assertEquals(message, “This text”);
+• Assert.assertNotEquals(message, “This text”);
+• Assert.assertTrue(result<0);
+• Assert.assertFalse(result<0);
+
+>>DELETE [DML] - if need to delete single row. can be roll back
+>>DROP[DDL]- if need to drop whole table. can't rollback
+>>TRUNCATE[DDL]- if need to delete all rows. can't rollback
+
+
+
+

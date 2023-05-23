@@ -1,0 +1,145 @@
+Pages
+	-Basepage
+	-HomeApage
+	-LoginPage
+
+TestCases
+	-BaseTest
+	-LoginTC
+	-Action1
+Utils	
+	-ExtentReports
+		-ExtentManager
+		-ExtentTestManager
+	-Listeners
+		-Retry
+		-testListener
+		-AnnotationTransformer
+	-Logs
+		-logs
+resources
+	-extent.properties
+	-logback.xml
+
+
+===================
+
+Maintaing test data like
+There are lot of ways
+
+Different file like CSV,xls,json,XML,txt,properties file (in java). Reader writer for all files are available in different language.
+Data provider annotation of testng
+You can use API for test data creatiom and using at run time.
+You can use database to read tests data at run time and use in your test case.
+You can use any kind of data structures to store and control test data.
+You can use junit runner class to control test data.
+=======================
+
+Using both BDD and TestNG
+
+**AFTER FAILURE**
+
+1) BDD using TestNG
+-when we have failure, than i write my code in ItestListerner to what to perform after failure.
+-We can also write our screenshot code which will excute after fail in @AfterStep which will execute after every step
+@AfterStep
+	public void afterStep(Scenario sc) {
+		if(sc.isFailed())
+		System.out.println("this is AFTER STEP");
+	}
+
+
+2) TestNG
+-when we have failure, than i write my code in ItestListerner to what to perform after failure.
+
+==========================
+Roles and Resp.
+My responsibility is to understand Business Requirement Specification and High-Level scenarios and to 
+convert them into test cases & Automation scripts if required. 
+Execution of test cases and reporting of defect to the developer if there any and get them fixed.
+I have experience on Functional, Automation, Regression, Smoke, Sanity, Web accessibility, Web 
+Analytics, Mobile Testing
+
+==============================
+
+Parallel Tetsing
+
+To trigger parallel test execution in TestNG, i.e., run tests on separate threads, we need to set the parallel attribute. This attribute accepts four values:
+
+methods – runs all methods with @Test annotation in parallel mode
+<suite name="Suite" parallel="methods">
+
+tests – runs all test cases present inside <test> tag in the XML in parallel mode
+<suite name="Suite" parallel="tests">
+
+classes – runs all test cases present inside <classes> in the XML in parallel mode
+<suite name="Suite" parallel="classes">
+
+instances – runs all test cases in the same instance in parallel mode
+
+---------------
+>>METHODS:
+to perform parallel testing by running MULTIPLE METHODS by below line in testng.xml
+<suite name="Parallel Test Suite" parallel="methods">
+
+>>TESTS-SUITE:
+<suite name="Parallel Test Suite" parallel="tests" thread-count="5">
+
+****************************************************************************************
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Parallel Test Suite" parallel="tests" thread-count="5">
+ 
+    <test name="Chrome Test">
+        <parameter name="browser" value="chrome" />
+        <parameter name="version" value="79.0" />
+        <parameter name="platform" value="WIN10" />
+        <classes>
+            <class name="testng.ParallelTest" />
+        </classes>
+    </test>
+ 
+    <test name="Firefox Test">
+        <parameter name="browser" value="firefox" />
+        <parameter name="version" value="62.0" />
+        <parameter name="platform" value="WIN8" />
+        <classes>
+            <class name="testng.ParallelTest" />
+        </classes>
+    </test>
+ 
+    <test name="Safari Test">
+        <parameter name="browser" value="safari" />
+        <parameter name="version" value="11.0" />
+        <parameter name="platform" value="macos 10.13" />
+        <classes>
+            <class name="testng.ParallelTest" />
+        </classes>
+    </test>
+   
+        <test name="IE Test">
+        <parameter name="browser" value="ie" />
+        <parameter name="version" value="11.0" />
+        <parameter name="platform" value="WIN10" />
+        <classes>
+            <class name="testng.ParallelTest" />
+        </classes>
+    </test>
+   
+            <test name="Opera Test">
+        <parameter name="browser" value="opera" />
+        <parameter name="version" value="73.0" />
+        <parameter name="platform" value="WIN10" />
+        <classes>
+            <class name="testng.ParallelTest" />
+        </classes>
+    </test>
+   
+ 
+    <!-- Test -->
+</suite> <!-- Suite -->
+
+========================================
+
+
+

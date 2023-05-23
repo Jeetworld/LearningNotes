@@ -1,0 +1,10 @@
+
+-second highest salary
+-json schema validation
+-which is idempotent from GET AND POST
+-method overrindg practical
+-different design pattern
+-what is singletone pattern
+-what is SOAP, RESTAPI 
+-Why we perform API Testing
+-What is 

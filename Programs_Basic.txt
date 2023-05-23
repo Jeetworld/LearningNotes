@@ -1,0 +1,81 @@
+>>  String gfg[] = { "Geeks", "for", "Geeks" };
+int[] arr ={22,33,55,66};
+  System.out.println(Arrays.toString(gfg));	//to print the String+Int array in one line
+
+>> for (int element: array) {
+            System.out.println(element);	//to print the int array 
+        }
+
+>>to print the size of Array is ".length"
+
+>>int i = 100;
+String str1 = String.valueOf(i);	//convert int to str
+
+>>String str2= "200";
+Integer itr = Integer.valueOf(str2);	//convert str to int
+
+>>int[] temp = new int[n];
+
+>>prog
+
+-str.toCharArray(); >> to break the str into characters char[] ch
+-to process the char[] ch i.e char array, than we use for each loop - for(char c : charArray)
+-StringBuilder sb= new SttingBuilder();
+sb.append(ch[i]);
+-swap two numbers
+b=b + a;
+a=b - a;
+b=b - a;
+
+-Arrays.toString(arr) >> to rpint the arry in one line
+-string.charAt(i)
+-arr[i]
+
+-% >> Remainder
+-/ >> Quotient
+
+-for(char c : charArray) {
+		if (!Character.isWhitespace(c))
+			output.append(c);
+
+-str = str.strip(); >>to remove whitesapce
+
+- Arrays.sort(arr);
+- if we want to print whole array in one shot than >> Arrays.toString(arr);
+
+-int[] array = { 1, 2, 3, 4, 5 };
+
+int sum = 0;
+
+for (int i : array)
+	sum += i;
+
+-if we have tag started with a means <a href=''''/>, than it;s a link. so we can use linkText locator.... By.linkText("signin page").click();
+
+Integer i=Integer.valueOf(s); --conver string to integer
+
+//finds the last digit of the given number    
+digit = number % 10;  
+//adds last digit to the variable sum  
+sum = sum + digit;  
+//removes the last digit from the number  
+number = number / 10;  
+----------------------
+reverse the no
+while(number != 0)   
+{  
+int remainder = number % 10;  
+reverse = reverse * 10 + remainder;  
+number = number/10;  
+}  
+
+----------------------
+
+
+Arrays.toString(arr) --prints the String[] arr in single line
+Collections.sort(list1);  --to sort the list
+
+>>
+int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 }; 
+
+int[] intArray = new int[20];

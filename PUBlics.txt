@@ -1,0 +1,88 @@
+what is webdriver
+asynchro and 
+abstarction and encaption
+checked aadn chec
+local anad variable
+waits
+down casting and uplasting
+loger .info and logger.debug
+Quality Engg
+Types of non fucntional
+accessibility tools sceurity 
+
+
+-lang skills
+-opsp princiapl
+exception ahdnling
+file IO
+data structer esp list and map
+
+automation tools skills
+-webdriver archetype
+object identfication
+synchronsatin techniques
+pom and page factory
+end to end testing
+|| executiona nd sel grid
+design pattern and type of framewrodks
+
+UI coding
+-lang coding
+-automation tool code
+
+
+-Frameworkd
+-automatiomn framework
+-POM 
+-Mocks, creation wiremocks 
+-configuration json xml file
+-piple line creation
+testng and tags
+-cicd tools 
+-log4j
+-
+
+Dekstop
+-git comds
+-git flows
+-shell basic comds
+-grovvy bascics
+-creating and managing piple line 
+-monorepro basics
+-docker and kubertinees
+
+--Non function
+-Jmeter
+-baze 
+-page perform testing
+-mesuring and page load time
+-creating nfr and work load models
+
+-health care domain
+-BDD and TDD
+-unti testing baics
+-cucumber handson
+-|| exec and cucumber
+-hooks 
+-maven with gradel
+-html rpreorts
+
+
+-QA process
+-test pyrimds
+-testing automation in automation
+-bug life cycle
+-test manage and reporting
+-test data management
+-test stregy and estimatin
+-RTM
+automation RTM
+
+-cloud func
+-reconsilsatio  testing
+AI ML
+
+------------------
+
+mocaking tool and service virtualisation
+graphql api
